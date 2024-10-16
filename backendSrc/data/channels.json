@@ -1,0 +1,23 @@
+[
+	{
+	  "name": "general",
+	  "isLocked": false,
+	  "members": ["guest123", "user1", "user2"]
+	},
+	{
+	  "name": "development",
+	  "isLocked": true,
+	  "members": ["user1", "user2"]
+	},
+	{
+	  "name": "random",
+	  "isLocked": false,
+	  "members": ["guest123", "user1", "user2", "admin"]
+	},
+	{
+	  "name": "admin-channel",
+	  "isLocked": true,
+	  "members": ["admin"]
+	}
+  ]
+  

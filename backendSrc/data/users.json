@@ -1,0 +1,23 @@
+[
+	{
+	  "username": "guest123",
+	  "password": "$2a$10$e7c8b86j.D9kaot8HgfpQ9/VR5XPi8hoGF",
+	  "role": "guest"
+	},
+	{
+	  "username": "user1",
+	  "password": "$2a$10$jkdf7g8adgjklG78lfHaN0lpw/Jei47",
+	  "role": "user"
+	},
+	{
+	  "username": "user2",
+	  "password": "$2a$10$fnd9834kjnfgd9843jFKWLDNfgj99ghF",
+	  "role": "user"
+	},
+	{
+	  "username": "admin",
+	  "password": "$2a$10$fh9dKJh98fwjhfFJKDJ897ljJkW",
+	  "role": "admin"
+	}
+  ]
+  

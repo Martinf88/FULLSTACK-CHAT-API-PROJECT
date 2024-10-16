@@ -1,0 +1,33 @@
+[
+	{
+	  "content": "Hej allihopa, välkomna till Chappy!",
+	  "sender": "guest123",
+	  "channel": "general",
+	  "timestamp": "2024-10-01T08:00:00Z"
+	},
+	{
+	  "content": "Vad jobbar ni med idag?",
+	  "sender": "user1",
+	  "channel": "general",
+	  "timestamp": "2024-10-01T09:00:00Z"
+	},
+	{
+	  "content": "Ska jobba med frontend!",
+	  "sender": "user2",
+	  "channel": "development",
+	  "timestamp": "2024-10-01T10:00:00Z"
+	},
+	{
+	  "content": "Ska vi deploya nya versionen?",
+	  "sender": "admin",
+	  "channel": "admin-channel",
+	  "timestamp": "2024-10-01T11:00:00Z"
+	},
+	{
+	  "content": "Någon som har testat Giphy API?",
+	  "sender": "user1",
+	  "channel": "random",
+	  "timestamp": "2024-10-01T12:00:00Z"
+	}
+  ]
+  
