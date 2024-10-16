@@ -1,23 +1,23 @@
 [
 	{
-	  "name": "general",
+	  "name": "roundtable-hold",
 	  "isLocked": false,
-	  "members": ["guest123", "user1", "user2"]
+	  "members": ["TarnishedKnight", "ErdtreeGuardian", "MoonveilMage"]
 	},
 	{
-	  "name": "development",
+	  "name": "stormveil-castle",
 	  "isLocked": true,
-	  "members": ["user1", "user2"]
+	  "members": ["ErdtreeGuardian", "MoonveilMage"]
 	},
 	{
-	  "name": "random",
+	  "name": "limgrave",
 	  "isLocked": false,
-	  "members": ["guest123", "user1", "user2", "admin"]
+	  "members": ["TarnishedKnight", "ErdtreeGuardian", "MoonveilMage", "GodfreyTheFirst"]
 	},
 	{
-	  "name": "admin-channel",
+	  "name": "elden-throne",
 	  "isLocked": true,
-	  "members": ["admin"]
+	  "members": ["GodfreyTheFirst"]
 	}
   ]
   

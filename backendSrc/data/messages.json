@@ -1,32 +1,32 @@
 [
 	{
-	  "content": "Hej allihopa, välkomna till Chappy!",
-	  "sender": "guest123",
-	  "channel": "general",
+	  "content": "Welcome to Roundtable Hold, Tarnished!",
+	  "sender": "TarnishedKnight",
+	  "channel": "roundtable-hold",
 	  "timestamp": "2024-10-01T08:00:00Z"
 	},
 	{
-	  "content": "Vad jobbar ni med idag?",
-	  "sender": "user1",
-	  "channel": "general",
+	  "content": "Anyone ready for a raid in Stormveil?",
+	  "sender": "ErdtreeGuardian",
+	  "channel": "roundtable-hold",
 	  "timestamp": "2024-10-01T09:00:00Z"
 	},
 	{
-	  "content": "Ska jobba med frontend!",
-	  "sender": "user2",
-	  "channel": "development",
+	  "content": "I’ll prepare my spells for battle!",
+	  "sender": "MoonveilMage",
+	  "channel": "stormveil-castle",
 	  "timestamp": "2024-10-01T10:00:00Z"
 	},
 	{
-	  "content": "Ska vi deploya nya versionen?",
-	  "sender": "admin",
-	  "channel": "admin-channel",
+	  "content": "Prepare for the Elden Throne!",
+	  "sender": "GodfreyTheFirst",
+	  "channel": "elden-throne",
 	  "timestamp": "2024-10-01T11:00:00Z"
 	},
 	{
-	  "content": "Någon som har testat Giphy API?",
-	  "sender": "user1",
-	  "channel": "random",
+	  "content": "Anyone interested in exploring Limgrave?",
+	  "sender": "ErdtreeGuardian",
+	  "channel": "limgrave",
 	  "timestamp": "2024-10-01T12:00:00Z"
 	}
   ]
