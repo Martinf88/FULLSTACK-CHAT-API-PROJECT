@@ -3,7 +3,7 @@ import { usersRouter } from './routes/userRoutes.js'
 import { channelsRouter } from './routes/channelRoutes.js'
 import { messagesRouter } from './routes/messageRoutes.js'
 import { directMessagesRouter } from './routes/directMessageRoutes.js'
-// import { loginRouter } from './routes/loginRoute.js'
+import { loginRouter } from './routes/loginRoute.js'
 import { connectDB } from './database/database.js'
 
 const app: Express = express()
@@ -21,7 +21,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/channels', channelsRouter)
 app.use('/api/messages', messagesRouter)
 app.use('/api/directMessages', directMessagesRouter)
-// app.use('/api/login', loginRouter)
+app.use('/api/login', loginRouter)
 
 async function startServer() {
 	try {

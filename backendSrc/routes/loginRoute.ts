@@ -1,32 +1,37 @@
-// import express, { Router, Request, Response } from "express"
+import express, { Router, Request, Response } from "express"
+import { getDB } from "../database/database";
+import { User } from "../models/userModel";
 
 
 
-// export const loginRouter: Router = express.Router()
+export const loginRouter: Router = express.Router()
 
-// loginRouter.post('/', async (req: Request, res: Response) => {
-// 	const { email, password } = req.body
+loginRouter.post('/', async (req: Request, res: Response) => {
+	const { username, password } = req.body;
 
-// 	if( !process.env.SECRET ) {
-// 		res.sendStatus(500)
-// 		return
-// 	}
+	if ( !username || !password ) {
+		res.status(400).send({ message: "Username and password are required" })
+		return
+	}
 
-// 	try {
-// 		const user = await 
-// 	}
+	try {
+		const db = getDB()
+		const usersCollection = db.collection<User>('users');
 
-// 	const userId = validateLogin(req.body.username, req.body.password)
+		const user = await usersCollection.findOne({ username })
 
+		if ( !user ) {
+			res.status(404).send({ message: 'User not found' })
+			return
+		}
 
-// 	if( !userId ) {
-// 		res.sendStatus(401)
-// 		return
-// 	}
+		if ( user.password !== password ) {
+			res.status(401).send( { message: "Invalid password" })
+			return
+		}
+	} catch(error) {
+		console.error('Error during login: ', error);
+		res.status(500).send( { message: "Internal server error" } )
+	}
 
-// 	const payload = {
-// 		userId
-// 	}
-// 	const token: string = sign(payload, process.env.SECRET)
-// 	res.send({ jwt: token })
-// })
+})
