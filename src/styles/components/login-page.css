@@ -1,0 +1,29 @@
+.login-page__title {
+	text-align: center;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--clr-darkgrey);
+	border-radius: 12px;
+	padding: 2rem 2rem 0.5rem 2rem;
+	align-items: center;
+	max-width: 250px;
+}
+
+.form__subtitle {
+}
+
+.form-group {
+	margin-bottom: var(--size-2xl);
+}
+
+input {
+	padding: 6px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+}
