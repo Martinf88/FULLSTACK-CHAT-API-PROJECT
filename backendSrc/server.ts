@@ -1,7 +1,8 @@
 import express, {Express, Request, NextFunction} from 'express'
 import { usersRouter } from './routes/userRoutes.js'
-import { channelsRouter } from './routes/ChannelRoutes.js'
+import { channelsRouter } from './routes/channelRoutes.js'
 import { messagesRouter } from './routes/messageRoutes.js'
+import { directMessagesRouter } from './routes/directMessageRoutes.js'
 
 const app: Express = express()
 const PORT: number = Number(process.env.PORT || 1313)
@@ -17,6 +18,7 @@ app.use('/', (req: Request, _, next: NextFunction) => {
 app.use('/api/users', usersRouter)
 app.use('/api/channels', channelsRouter)
 app.use('/api/messages', messagesRouter)
+app.use('/api/directMessages', directMessagesRouter)
 
 
 

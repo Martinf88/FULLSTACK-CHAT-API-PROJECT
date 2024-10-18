@@ -12,7 +12,7 @@ messagesRouter.get('/', async ( _, res: Response) => {
 		const messages: WithId<Message>[] = await getAllMessages()
 		res.send(messages);
 	} catch (error) {
-		console.error('Error retrieving channels:', error);
+		console.error('Error retrieving messages:', error);
         res.sendStatus(500);
 	}
 })
