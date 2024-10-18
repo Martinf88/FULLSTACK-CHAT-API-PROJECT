@@ -5,11 +5,20 @@ function LoginPage() {
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [isLoggedIn, SetIsLoggedIn] = useState<Boolean>(false);
+
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		
+		console.log('Username:', username);
+		console.log('Password:', password);
+		
+	}
 	
 	return (
 		<div className="login-page">
 				<h1 className="login-page__title">CHAPPY</h1>
-			<form action="" className="form container">
+			<form onSubmit={handleSubmit} className="form container">
 				<h2 className="form-group">Welcome</h2>
 				<div className="form-group">
 				 <label htmlFor="username">Username:</label>

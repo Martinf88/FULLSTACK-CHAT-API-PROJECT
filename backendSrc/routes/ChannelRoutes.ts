@@ -1,7 +1,7 @@
 import express, { Response, Router } from 'express'
+import { Channel } from '../models/channelModel.js'
 import { WithId } from 'mongodb'
 import { getAllChannels } from '../database/channelCollection.js'
-import { Channel } from '../models/channelModel.js'
 
 
 export const channelsRouter: Router = express.Router()
