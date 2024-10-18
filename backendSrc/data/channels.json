@@ -1,23 +1,19 @@
 [
 	{
 	  "name": "roundtable-hold",
-	  "isLocked": false,
-	  "members": ["TarnishedKnight", "ErdtreeGuardian", "MoonveilMage"]
+	  "isLocked": false
 	},
 	{
 	  "name": "stormveil-castle",
-	  "isLocked": true,
-	  "members": ["ErdtreeGuardian", "MoonveilMage"]
+	  "isLocked": true
 	},
 	{
 	  "name": "limgrave",
-	  "isLocked": false,
-	  "members": ["TarnishedKnight", "ErdtreeGuardian", "MoonveilMage", "GodfreyTheFirst"]
+	  "isLocked": false
 	},
 	{
 	  "name": "elden-throne",
-	  "isLocked": true,
-	  "members": ["GodfreyTheFirst"]
+	  "isLocked": true
 	}
   ]
   

@@ -2,31 +2,31 @@
 	{
 	  "content": "Welcome to Roundtable Hold, Tarnished!",
 	  "sender": "TarnishedKnight",
-	  "channel": "roundtable-hold",
+	  "channelId": "roundtable-hold",
 	  "timestamp": "2024-10-01T08:00:00Z"
 	},
 	{
 	  "content": "Anyone ready for a raid in Stormveil?",
 	  "sender": "ErdtreeGuardian",
-	  "channel": "roundtable-hold",
+	  "channelId": "roundtable-hold",
 	  "timestamp": "2024-10-01T09:00:00Z"
 	},
 	{
 	  "content": "I’ll prepare my spells for battle!",
 	  "sender": "MoonveilMage",
-	  "channel": "stormveil-castle",
+	  "channelId": "stormveil-castle",
 	  "timestamp": "2024-10-01T10:00:00Z"
 	},
 	{
 	  "content": "Prepare for the Elden Throne!",
 	  "sender": "GodfreyTheFirst",
-	  "channel": "elden-throne",
+	  "channelId": "elden-throne",
 	  "timestamp": "2024-10-01T11:00:00Z"
 	},
 	{
 	  "content": "Anyone interested in exploring Limgrave?",
 	  "sender": "ErdtreeGuardian",
-	  "channel": "limgrave",
+	  "channelId": "limgrave",
 	  "timestamp": "2024-10-01T12:00:00Z"
 	}
   ]
