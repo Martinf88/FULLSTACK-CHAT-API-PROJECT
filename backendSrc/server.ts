@@ -32,8 +32,6 @@ async function startServer() {
 	} catch (error) {
 		console.error('Failed to connect to the database:', error);
 
-
-		// TODO: fråga David om process.exit(1)
 		// 1 = Ending process with some failure
 		process.exit(1)
 	}

@@ -11,7 +11,7 @@ async function connectDB() {
         throw new Error('No connection string');
     }
 	const client = new MongoClient(con)
-	
+	console.log('database.ts connectDB: con=', con)
 	try{
 		await client.connect();
 		db = client.db('Chappy');
