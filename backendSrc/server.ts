@@ -1,6 +1,6 @@
 import express, {Express, Request, NextFunction} from 'express'
 import { usersRouter } from './routes/userRoutes.js'
-import { channelRouter } from './routes/channelRoutes.js'
+import { channelRouter } from './routes/ChannelRoutes.js'
 import { messagesRouter } from './routes/messageRoutes.js'
 import { directMessagesRouter } from './routes/directMessageRoutes.js'
 import { loginRouter } from './routes/loginRoute.js'
