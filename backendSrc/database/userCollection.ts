@@ -1,6 +1,6 @@
 import { WithId } from "mongodb";
-import { User } from "../models/userModel";
-import { getDB } from "./database";
+import { User } from "../models/userModel.js";
+import { getDB } from "./database.js";
 
 async function getAllUsers(): Promise<WithId<User>[]> {
     try {

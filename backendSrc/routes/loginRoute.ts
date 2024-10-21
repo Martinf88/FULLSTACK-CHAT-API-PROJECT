@@ -1,7 +1,8 @@
 import express, { Router, Request, Response } from "express"
-import { getDB } from "../database/database";
-import { User } from "../models/userModel";
-import { sign } from 'jsonwebtoken'
+import { getDB } from "../database/database.js";
+import { User } from "../models/userModel.js";
+import jwt from 'jsonwebtoken';
+const { sign } = jwt; 
 
 const SECRET = process.env.SECRET
 
