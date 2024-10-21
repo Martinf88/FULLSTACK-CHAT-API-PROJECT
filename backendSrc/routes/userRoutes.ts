@@ -1,7 +1,7 @@
 import express, { Response, Router } from 'express'
 import { User } from '../models/userModel'
 import { WithId } from 'mongodb'
-import { getAllUsers } from '../database/userCollection.js'
+import { getAllUsers } from '../database/userCollection'
 
 export const usersRouter: Router = express.Router()
 

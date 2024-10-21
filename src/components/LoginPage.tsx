@@ -4,7 +4,7 @@ import { useState } from "react";
 function LoginPage() {
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
-	const [isLoggedIn, SetIsLoggedIn] = useState<Boolean>(false);
+	// const [isLoggedIn, SetIsLoggedIn] = useState<Boolean>(false);
 
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
