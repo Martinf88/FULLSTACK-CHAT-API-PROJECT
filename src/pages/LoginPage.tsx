@@ -49,7 +49,6 @@ function LoginPage() {
 	
 	return (
 		<div className="login-page">
-				<h1 className="login-page__title">CHAPPY</h1>
 			<form onSubmit={handleSubmit} className="form container">
 				<h2 className="form-group">Welcome</h2>
 				<div className="form-group">

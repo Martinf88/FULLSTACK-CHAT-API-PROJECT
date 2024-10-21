@@ -1,0 +1,13 @@
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	border-bottom: 2px solid var(--clr-lightgrey);
+}
+
+.nav-text__wrapper {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
