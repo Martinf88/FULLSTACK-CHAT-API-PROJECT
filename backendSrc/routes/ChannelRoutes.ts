@@ -4,9 +4,9 @@ import { WithId } from 'mongodb'
 import { getAllChannels } from '../database/channelCollection.js'
 
 
-export const channelsRouter: Router = express.Router()
+export const channelRouter: Router = express.Router()
 
-channelsRouter.get('/', async ( _, res: Response) => {
+channelRouter.get('/', async ( _, res: Response) => {
 	try {
 		const channels: WithId<Channel>[] = await getAllChannels()
 		res.send(channels);

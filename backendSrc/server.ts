@@ -1,6 +1,6 @@
 import express, {Express, Request, NextFunction} from 'express'
 import { usersRouter } from './routes/userRoutes.js'
-import { channelsRouter } from './routes/channelRoutes.js'
+import { channelRouter } from './routes/channelRoutes.js'
 import { messagesRouter } from './routes/messageRoutes.js'
 import { directMessagesRouter } from './routes/directMessageRoutes.js'
 import { loginRouter } from './routes/loginRoute.js'
@@ -18,7 +18,7 @@ app.use('/', (req: Request, _, next: NextFunction) => {
 })
 
 app.use('/api/users', usersRouter)
-app.use('/api/channels', channelsRouter)
+app.use('/api/channels', channelRouter)
 app.use('/api/messages', messagesRouter)
 app.use('/api/directMessages', directMessagesRouter)
 app.use('/api/login', loginRouter)
