@@ -16,3 +16,5 @@ messagesRouter.get('/', async ( _, res: Response) => {
         res.sendStatus(500);
 	}
 })
+
+

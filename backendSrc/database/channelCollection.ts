@@ -12,9 +12,6 @@ async function getAllChannels(): Promise<WithId<Channel>[]> {
         console.error('Error fetching users: ', error);
         throw new Error("Could not fetch users");
     } 
-	// finally {
-    //     await client.close();
-    // }
 }
 
 export { getAllChannels }

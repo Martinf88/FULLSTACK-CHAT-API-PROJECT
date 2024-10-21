@@ -13,9 +13,6 @@ async function getAllDirectMessages(): Promise<WithId<DirectMessage>[]> {
         console.error('Error fetching DMs: ', error);
         throw new Error("Could not fetch DMs");
     } 
-	// finally {
-    //     await client.close();
-    // }
 }
 
 export { getAllDirectMessages }

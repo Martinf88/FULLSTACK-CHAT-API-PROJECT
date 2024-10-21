@@ -12,9 +12,6 @@ async function getAllMessages(): Promise<WithId<Message>[]> {
         console.error('Error fetching messages: ', error);
         throw new Error("Could not fetch messages");
     } 
-	// finally {
-    //     await client.close();
-    // }
 }
 
 export { getAllMessages }

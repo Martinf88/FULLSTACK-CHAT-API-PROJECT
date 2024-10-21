@@ -30,8 +30,6 @@ function getDB(): Db {
 }
 
 
-//TODO: Fråga David om det här sättet att stänga client
-
 async function closeDB() {
 	if (client) {
 		await client.close()
