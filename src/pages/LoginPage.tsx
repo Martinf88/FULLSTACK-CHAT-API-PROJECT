@@ -7,11 +7,43 @@ function LoginPage() {
 	// const [isLoggedIn, SetIsLoggedIn] = useState<Boolean>(false);
 
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		
 		console.log('Username:', username);
 		console.log('Password:', password);
+
+		const data = { username, password }
+
+		try {
+			const response = await fetch('/api/login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify( data )
+			})
+	
+			if(response.status !== 200) {
+				console.log('Error message från servern: ', response.status);
+			}
+		
+			const responseData = await response.json();
+			console.log('Message from server: ', responseData);
+
+			if(responseData.token) {
+				console.log('JWT-token: ', responseData.token);
+				localStorage.setItem('jwtToken', responseData.token)
+			} else {
+				console.log('Token not foind in response.');
+				
+			}
+			
+		} catch(error) {
+			console.error('An error occurred during login:', error);
+		}
+
+		
 		
 	}
 	
