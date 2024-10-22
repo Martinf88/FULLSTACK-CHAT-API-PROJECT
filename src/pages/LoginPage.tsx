@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 function LoginPage() {
-	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string | null>(null);
+
+	const username = useChatStore(state => state.username);
+	const setUsername = useChatStore(state => state.setUsername);
 	const setIsLoggedIn = useChatStore(state => state.setIsLoggedIn);
 	const isLoggedIn = useChatStore(state => state.isLoggedIn);
 	const navigate = useNavigate();

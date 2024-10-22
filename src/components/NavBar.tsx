@@ -6,9 +6,13 @@ function NavBar () {
 	const setIsLoggedIn = useChatStore(state => state.setIsLoggedIn)
 	const navigate = useNavigate();
 
+	const username = useChatStore(state => state.username);
+	const setUsername = useChatStore(state => state.setUsername);
+
 	const handleLogOut = () => {
 		localStorage.removeItem('jwtToken')
 		setIsLoggedIn(false)
+		setUsername('')
 
 		navigate('/login')
 	}
@@ -18,7 +22,7 @@ function NavBar () {
 		<nav className="nav">
 			<div className="nav-text__wrapper">
 				<h1 className="nav__title">CHAPPY</h1>
-				<p className="nav__subtitle">Guest or username</p>
+				<p className="nav__subtitle"> {!isLoggedIn ? 'Guest' : username} </p>
 			</div>
 			{!isLoggedIn ? (
 				<Link to={'login'}>
