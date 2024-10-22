@@ -29,6 +29,10 @@
 	margin: 0;
 }
 
+.locked__title {
+	margin-top: 1rem;
+}
+
 .channels__list li {
 	display: flex;
 	/* align-items: center; */
