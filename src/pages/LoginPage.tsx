@@ -1,20 +1,17 @@
 import { useState } from "react";
+import { useChatStore } from "../store/chatStore";
+import { useNavigate } from "react-router-dom";
 
 
 function LoginPage() {
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
-	// const [isLoggedIn, SetIsLoggedIn] = useState<Boolean>(false);
+	const [error, setError] = useState<string | null>(null);
+	const setIsLoggedIn = useChatStore(state => state.setIsLoggedIn);
+	const isLoggedIn = useChatStore(state => state.isLoggedIn);
+	const navigate = useNavigate();
 
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		
-		console.log('Username:', username);
-		console.log('Password:', password);
-
-		const data = { username, password }
-
+	const loginUser = async (data: { username: string, password: string }) => {
 		try {
 			const response = await fetch('/api/login', {
 				method: 'POST',
@@ -25,7 +22,9 @@ function LoginPage() {
 			})
 	
 			if(response.status !== 200) {
+				setError('Login failed. Please check your credentials.')
 				console.log('Error message från servern: ', response.status);
+				return
 			}
 		
 			const responseData = await response.json();
@@ -34,17 +33,26 @@ function LoginPage() {
 			if(responseData.token) {
 				console.log('JWT-token: ', responseData.token);
 				localStorage.setItem('jwtToken', responseData.token)
+				if(!isLoggedIn){
+					setIsLoggedIn(true)
+				}
+				navigate('/')
 			} else {
-				console.log('Token not foind in response.');
-				
+				setError('Login failed. Token not found in response')
+				console.log('Token not found in response.');
 			}
 			
 		} catch(error) {
 			console.error('An error occurred during login:', error);
+			setError('An error occurred. Please try again later.')
 		}
+	}
 
-		
-		
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const data = { username, password }
+		await loginUser(data);
 	}
 	
 	return (
