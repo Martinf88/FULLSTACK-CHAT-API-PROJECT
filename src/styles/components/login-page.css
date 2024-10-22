@@ -3,7 +3,7 @@
 	flex-direction: column;
 	background-color: var(--clr-darkgrey);
 	border-radius: 12px;
-	padding: 2rem 2rem 0.5rem 2rem;
+	padding: 1.5rem;
 	align-items: center;
 	max-width: 250px;
 }
@@ -20,4 +20,8 @@ input {
 	font-size: 16px;
 	border: 1px solid #ccc;
 	border-radius: 12px;
+}
+
+.error-message {
+	margin-bottom: var(--size-2xl);
 }

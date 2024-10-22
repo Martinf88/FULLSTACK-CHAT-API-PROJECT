@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useChatStore } from "../store/chatStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function LoginPage() {
@@ -22,7 +22,7 @@ function LoginPage() {
 			})
 	
 			if(response.status !== 200) {
-				setError('Login failed. Please check your credentials.')
+				setError('Wrong username or password!')
 				console.log('Error message från servern: ', response.status);
 				return
 			}
@@ -51,6 +51,7 @@ function LoginPage() {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setError(null);
 		const data = { username, password }
 		await loginUser(data);
 	}
@@ -82,7 +83,8 @@ function LoginPage() {
 			   <button type="submit" className="btn form-group">
 				 Log in
 			   </button>
-			   <a  href="">Continue as guest</a>
+			   {error && <p className="error-message"> {error} </p>}
+			   <Link  to={'/'}>Continue as guest</Link>
 			</form>
 		</div>
 	)

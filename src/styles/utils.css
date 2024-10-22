@@ -53,6 +53,15 @@
   .section {
 	margin-top: 5rem;
   }
+
+  .small-icon {
+	color: var(--clr-gold);
+	width: 28px;
+  }
+  .large-icon {
+	color: var(--clr-gold);
+	width: 36px;
+  }
   
   /* .loading {
 	  filter: blur(40px) grayscale(100%);
