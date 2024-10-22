@@ -6,7 +6,7 @@
 	margin-bottom: 2rem;
 }
 
-.chat-rooms-section__channels {
+.channels-section {
 	background-color: var(--clr-darkgrey);
 	flex-grow: 1;
 	border-radius: 12px 0 0 12px;
@@ -23,7 +23,16 @@
 	text-decoration: underline;
 }
 
-.lock {
-	display: inline-block;
-	margin-left: 0.5rem;
+.channels__list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.channels__list li {
+	display: flex;
+	/* align-items: center; */
+	padding: 0.5rem 0;
+    border-bottom: 1px solid var(--clr-lightgrey);
+	gap: 0.5rem;
 }
