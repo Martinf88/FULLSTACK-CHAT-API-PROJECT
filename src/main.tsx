@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root.tsx'
 import ErrorPage from './error-page.tsx'
-import ChatRoomsPage from './pages/ChatRoomsPage.tsx'
 import LoginPage from './pages/LoginPage.tsx'
+import ChannelsPage from './pages/ChannelsPage.tsx'
 
 const router = createBrowserRouter([
 	{
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "",
-				element: <ChatRoomsPage/>
+				element: <ChannelsPage/>
 			},
 			{
 				path: 'login',

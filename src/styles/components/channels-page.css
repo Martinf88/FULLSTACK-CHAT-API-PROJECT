@@ -22,3 +22,8 @@
 	font-size: var(--size-lg);
 	text-decoration: underline;
 }
+
+.lock {
+	display: inline-block;
+	margin-left: 0.5rem;
+}

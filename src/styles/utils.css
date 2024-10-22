@@ -54,6 +54,11 @@
 	margin-top: 5rem;
   }
 
+  .xs-icon {
+	color: var(--clr-gold);
+	width: 18px;
+  }
+
   .small-icon {
 	color: var(--clr-gold);
 	width: 28px;
