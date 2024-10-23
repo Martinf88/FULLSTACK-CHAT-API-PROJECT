@@ -11,7 +11,7 @@ function LockedChannelsList({lockedChannels}:LockedChannelsListProps) {
 	return (
 		<div className="channels__list">
 					{lockedChannels.map(channel => (
-                    <Link className="channel-link" to={'chatroom'} key={channel._id}>
+                    <Link className="channel-link" to={`/chatroom/${channel._id}`} key={channel._id}>
                         <span>{channel.name}</span>
                         <span>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="xs-icon">

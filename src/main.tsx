@@ -19,15 +19,15 @@ const router = createBrowserRouter([
 				element: <ChannelsPage/>
 			},
 			{
-				path: 'login',
+				path: '/login',
 				element: <LoginPage/>
 			},
 			{
-				path: 'chatroom',
+				path: '/chatroom/:channelId',
 				element: <ChatRoomPage/>
 			},
 			{
-				path: 'dm',
+				path: '/dm',
 				element: <DMChatPage/>
 			},
 		]
