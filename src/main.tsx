@@ -5,6 +5,8 @@ import Root from './routes/root.tsx'
 import ErrorPage from './error-page.tsx'
 import LoginPage from './pages/LoginPage.tsx'
 import ChannelsPage from './pages/ChannelsPage.tsx'
+import ChatRoomPage from './pages/ChatRoomPage.tsx'
+import DMChatPage from './pages/DMChatPage.tsx'
 
 const router = createBrowserRouter([
 	{
@@ -19,7 +21,15 @@ const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage/>
-			}
+			},
+			{
+				path: 'chatroom',
+				element: <ChatRoomPage/>
+			},
+			{
+				path: 'dm',
+				element: <DMChatPage/>
+			},
 		]
 	},
 ]);
