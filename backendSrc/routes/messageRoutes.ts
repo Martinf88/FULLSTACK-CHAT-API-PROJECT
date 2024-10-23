@@ -4,6 +4,7 @@ import { Message } from '../models/messageModel.js'
 import { getAllMessages, getMessagesByChannelId } from '../database/messageCollection.js'
 import { Channel } from '../models/channelModel.js'
 import { getChannelById } from '../database/channelCollection.js'
+import jwt from 'jsonwebtoken'
 
 
 export const messagesRouter: Router = express.Router()
@@ -30,8 +31,24 @@ messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
 		}
 
 		if(channel.isLocked) {
-			res.status(403).json({ message: 'Channel is locked' });
-			return
+			if( !process.env.SECRET ) {
+				res.sendStatus(500)
+				return
+			}
+			const token = req.headers.authorization;
+			if(!token) {
+				res.status(403).json({ message: 'Channel is locked, authorization required' });
+				return
+			}
+
+			let payload: any;
+			try {
+				payload = jwt.verify(token, process.env.SECRET)
+				console.log('Token payload: ', payload);
+			} catch(error) {
+				res.status(403).json({ message: 'Invalid token' });
+				return
+			}
 		}
 
 		const messages: WithId<Message>[] = await getMessagesByChannelId(channelId)
