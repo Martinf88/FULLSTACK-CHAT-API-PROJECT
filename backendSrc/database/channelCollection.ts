@@ -1,4 +1,4 @@
-import { WithId } from "mongodb";
+import { WithId, ObjectId } from "mongodb";
 import { Channel } from "../models/channelModel";
 import { getDB } from "./database.js";
 
@@ -14,4 +14,13 @@ async function getAllChannels(): Promise<WithId<Channel>[]> {
     } 
 }
 
-export { getAllChannels }
+async function getChannelById(channelId: string): Promise<WithId<Channel> | null> {
+    const db = getDB(); 
+
+	const objectId = new ObjectId(channelId);
+
+    return await db.collection<Channel>('channels').findOne({ _id: objectId });
+}
+
+
+export { getAllChannels, getChannelById }

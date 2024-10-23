@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Channel } from "../models/channelModel"
+import { useChatStore } from "../store/chatStore"
 
 
 const useChannels = () => {
-	const [channels, setChannels] = useState<Channel[]>([])
+	const setChannels = useChatStore(state => state.setChannels)
 	const [error, setError] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -34,7 +35,7 @@ const useChannels = () => {
 		fetchChannels();
 	}, [])
 
-	return { channels, error, isLoading }
+	return { error, isLoading }
 }
 
 

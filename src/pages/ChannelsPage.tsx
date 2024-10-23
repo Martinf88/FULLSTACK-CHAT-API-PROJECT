@@ -8,7 +8,8 @@ import useChannels from "../hooks/useChannels"
 function ChannelsPage() {
 	const isLoggedIn = useChatStore(state => state.isLoggedIn)
 	const [isModalOpen, setIsModalOpen] = useState(false)
-	const { channels, error, isLoading } = useChannels()
+	const { error, isLoading } = useChannels()
+	const channels = useChatStore(state => state.channels)
 
 	const handleAddDm = () => {
 		if(!isLoggedIn) {

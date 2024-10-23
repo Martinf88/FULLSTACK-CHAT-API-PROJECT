@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Message } from "../models/messageModel"
+import { useChatStore } from "../store/chatStore"
 
 function ChatRoomPage() {
 	const { channelId } = useParams<{ channelId: string }>()
 	const [messages, setMessages] = useState<Message[]>([])
+	const isLoggedIn = useChatStore(state => state.isLoggedIn)
 
-
-	//TODO: CHECK IF CHANNEL isLocked 
-	// If it is locked check for JWT-token
-	// then call protected routes
-	// OR MAKE DIFFERENT ROUTES FOR LOCKED vs OPEN CHANNELS????
 	useEffect(() => {
 		const fetchMessages = async () => {
 			const response = await fetch(`/api/messages/${channelId}`)

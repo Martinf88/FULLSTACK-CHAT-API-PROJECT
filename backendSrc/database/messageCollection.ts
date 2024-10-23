@@ -28,4 +28,5 @@ async function getMessagesByChannelId(channelId: string): Promise<WithId<Message
 	}
 }
 
-export { getAllMessages, getMessagesByChannelId }
+
+export { getAllMessages, getMessagesByChannelId };

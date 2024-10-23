@@ -1,8 +1,9 @@
 import express, { Response, Router, Request } from 'express'
 import { WithId } from 'mongodb'
-
 import { Message } from '../models/messageModel.js'
 import { getAllMessages, getMessagesByChannelId } from '../database/messageCollection.js'
+import { Channel } from '../models/channelModel.js'
+import { getChannelById } from '../database/channelCollection.js'
 
 
 export const messagesRouter: Router = express.Router()
@@ -21,6 +22,18 @@ messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
 	const { channelId } = req.params;
 
 	try {
+		const channel: WithId<Channel> | null = await getChannelById(channelId)
+
+		if(!channel) {
+			res.status(404).json({ message: 'Channel not found' });
+			return
+		}
+
+		if(channel.isLocked) {
+			res.status(403).json({ message: 'Channel is locked' });
+			return
+		}
+
 		const messages: WithId<Message>[] = await getMessagesByChannelId(channelId)
 		console.log('messages in backend: ', messages);
 		
@@ -30,5 +43,18 @@ messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
         res.sendStatus(500);
 	}
 })
+// messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
+// 	const { channelId } = req.params;
+
+// 	try {
+// 		const messages: WithId<Message>[] = await getMessagesByChannelId(channelId)
+// 		console.log('messages in backend: ', messages);
+		
+// 		res.send(messages);
+// 	} catch (error) {
+// 		console.error(`Error retrieving messages for channel ${channelId}: `, error);
+//         res.sendStatus(500);
+// 	}
+// })
 
 
