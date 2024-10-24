@@ -4,9 +4,10 @@ import LogInModal from "../components/LogInModal"
 import DMSection from "../components/DMSection"
 import ChannelsSection from "../components/ChannelsSection"
 import useChannels from "../hooks/useChannels"
+import { useAuthStore } from "../store/authStore"
 
 function ChannelsPage() {
-	const isLoggedIn = useChatStore(state => state.isLoggedIn)
+	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const { error, isLoading } = useChannels()
 	const channels = useChatStore(state => state.channels)

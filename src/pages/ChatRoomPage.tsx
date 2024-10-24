@@ -7,6 +7,9 @@ import useUsers from "../hooks/useUsers";
 import useChannels from "../hooks/useChannels";
 
 
+// TODO: move useEffect to a custom hook
+// TODO: move messages to chatStore
+
 function ChatRoomPage() {
 	const { channelId } = useParams<{ channelId: string }>()
 	const [messages, setMessages] = useState<Message[]>([])
