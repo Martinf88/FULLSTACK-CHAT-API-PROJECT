@@ -1,16 +1,23 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useChatStore } from "../store/chatStore"
+import useUsers from "../hooks/useUsers";
 
 function NavBar () {
 	const isLoggedIn = useChatStore(state => state.isLoggedIn)
 	const setIsLoggedIn = useChatStore(state => state.setIsLoggedIn)
 	const navigate = useNavigate();
-
-	const username = useChatStore(state => state.username);
+	const users = useChatStore(state => state.users);
 	const setUsername = useChatStore(state => state.setUsername);
 
+	useUsers();
+
+	const user = users.find(user => user._id);
+
 	const handleLogOut = () => {
+		localStorage.removeItem('isLoggedIn')
+		localStorage.removeItem('username')
 		localStorage.removeItem('jwtToken')
+		
 		setIsLoggedIn(false)
 		setUsername('')
 
@@ -22,7 +29,7 @@ function NavBar () {
 		<nav className="nav">
 			<div className="nav-text__wrapper">
 				<h1 className="nav__title">CHAPPY</h1>
-				<p className="nav__subtitle"> {!isLoggedIn ? 'Guest' : username} </p>
+				<p className="nav__subtitle"> {!isLoggedIn ? 'Guest' : user?.username} </p>
 			</div>
 			{!isLoggedIn ? (
 				<Link to={'login'}>

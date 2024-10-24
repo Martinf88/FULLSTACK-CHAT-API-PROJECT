@@ -60,18 +60,4 @@ messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
         res.sendStatus(500);
 	}
 })
-// messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
-// 	const { channelId } = req.params;
-
-// 	try {
-// 		const messages: WithId<Message>[] = await getMessagesByChannelId(channelId)
-// 		console.log('messages in backend: ', messages);
-		
-// 		res.send(messages);
-// 	} catch (error) {
-// 		console.error(`Error retrieving messages for channel ${channelId}: `, error);
-//         res.sendStatus(500);
-// 	}
-// })
-
 

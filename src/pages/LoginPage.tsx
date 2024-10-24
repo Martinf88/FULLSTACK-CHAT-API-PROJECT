@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useChatStore } from "../store/chatStore";
 import { Link, useNavigate } from "react-router-dom";
 
+// TODO: flytta ut kod
+// TODO: Fetcha users och dm's vid inloggning
 
 function LoginPage() {
 	const [password, setPassword] = useState<string>('');
@@ -60,10 +62,10 @@ function LoginPage() {
 	
 	return (
 		<div className="login-page">
-			<form onSubmit={handleSubmit} className="form container">
+			<form onSubmit={handleSubmit} className="form">
 				<h2 className="form-group">Welcome</h2>
 				<div className="form-group">
-				 <label htmlFor="username">Username:</label>
+				 <label htmlFor="username">Username</label>
 				 <input
 				   type="text"
 				   id="username"
@@ -73,7 +75,7 @@ function LoginPage() {
 				 />
 			   </div>
 			   <div className="form-group">
-				 <label htmlFor="password">Password:</label>
+				 <label htmlFor="password">Password</label>
 				 <input
 				   type="password"
 				   id="password"

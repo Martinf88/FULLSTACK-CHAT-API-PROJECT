@@ -4,7 +4,6 @@
 	align-items: end;
 	padding: 0.5rem 0.5rem 0;
 	border-bottom: 2px solid var(--clr-lightgrey);
-	margin-bottom: 1rem;
 }
 
 .nav-text__wrapper {
