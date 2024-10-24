@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Message } from "../models/messageModel"
 import { useChatStore } from "../store/chatStore"
+import { useAuthStore } from "../store/authStore"
 import useUsers from "../hooks/useUsers";
 import useChannels from "../hooks/useChannels";
 
@@ -10,9 +11,9 @@ function ChatRoomPage() {
 	const { channelId } = useParams<{ channelId: string }>()
 	const [messages, setMessages] = useState<Message[]>([])
 	const [error, setError] = useState<string | null>(null);
-	const isLoggedIn = useChatStore(state => state.isLoggedIn)
+	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 	const channels = useChatStore(state => state.channels)
-	const users = useChatStore(state => state.users)
+	const users = useAuthStore(state => state.users)
 
 	
 	const { error: userError, isLoading: isUserLoading } = useUsers();

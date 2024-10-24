@@ -1,63 +1,26 @@
 import { useState } from "react";
-import { useChatStore } from "../store/chatStore";
-import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
+import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
 
-// TODO: flytta ut kod
 // TODO: Fetcha users och dm's vid inloggning
 
 function LoginPage() {
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string | null>(null);
-
-	const username = useChatStore(state => state.username);
-	const setUsername = useChatStore(state => state.setUsername);
-	const setIsLoggedIn = useChatStore(state => state.setIsLoggedIn);
-	const isLoggedIn = useChatStore(state => state.isLoggedIn);
-	const navigate = useNavigate();
-
-	const loginUser = async (data: { username: string, password: string }) => {
-		try {
-			const response = await fetch('/api/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify( data )
-			})
+	const username = useAuthStore(state => state.username);
+	const setUsername = useAuthStore(state => state.setUsername);
+	const { loginUser } = useLogin()
 	
-			if(response.status !== 200) {
-				setError('Wrong username or password!')
-				console.log('Error message från servern: ', response.status);
-				return
-			}
-		
-			const responseData = await response.json();
-			console.log('Message from server: ', responseData);
-
-			if(responseData.token) {
-				console.log('JWT-token: ', responseData.token);
-				localStorage.setItem('jwtToken', responseData.token)
-				if(!isLoggedIn){
-					setIsLoggedIn(true)
-				}
-				navigate('/')
-			} else {
-				setError('Login failed. Token not found in response')
-				console.log('Token not found in response.');
-			}
-			
-		} catch(error) {
-			console.error('An error occurred during login:', error);
-			setError('An error occurred. Please try again later.')
-		}
-	}
-
-
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setError(null);
 		const data = { username, password }
-		await loginUser(data);
+		try {
+			await loginUser(data);
+		} catch (err) {
+			setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+		}
 	}
 	
 	return (

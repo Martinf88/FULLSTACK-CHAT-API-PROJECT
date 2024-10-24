@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { User } from "../models/userModel"
-import { useChatStore } from "../store/chatStore"
+import { useAuthStore } from "../store/authStore"
 
 
 const useUsers = () => {
-	const setUsers = useChatStore(state => state.setUsers)
+	const setUsers = useAuthStore(state => state.setUsers)
 	const [error, setError] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
