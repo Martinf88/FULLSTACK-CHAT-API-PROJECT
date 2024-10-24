@@ -19,6 +19,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
 	username: localStorage.getItem('username') || '',
 	setUsername: (username: string) => {
+		console.log('Setting username in localStorage:', username);
 		localStorage.setItem('username', username);
 		set({ username });
 	},

@@ -6,12 +6,12 @@ function NavBar () {
 	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 	const setIsLoggedIn = useAuthStore(state => state.setIsLoggedIn)
 	const navigate = useNavigate();
-	const users = useAuthStore(state => state.users);
+	const username = useAuthStore(state => state.username);
 	const setUsername = useAuthStore(state => state.setUsername);
 
+	// TODO: is this call of useUsers good or problematic? 
 	useUsers();
 
-	const user = users.find(user => user._id);
 
 	const handleLogOut = () => {
 		localStorage.removeItem('isLoggedIn')
@@ -29,7 +29,7 @@ function NavBar () {
 		<nav className="nav">
 			<div className="nav-text__wrapper">
 				<h1 className="nav__title">CHAPPY</h1>
-				<p className="nav__subtitle"> {!isLoggedIn ? 'Guest' : user?.username} </p>
+				<p className="nav__subtitle"> {!isLoggedIn ? 'Guest' : username} </p>
 			</div>
 			{!isLoggedIn ? (
 				<Link to={'login'}>

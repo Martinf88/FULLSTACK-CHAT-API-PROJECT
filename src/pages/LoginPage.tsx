@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 
 // TODO: Fetcha users och dm's vid inloggning
+// TODO: Fix localstorage of username, it is bugged.
 
 function LoginPage() {
+	const [inputUsername, setInputUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string | null>(null);
 	const username = useAuthStore(state => state.username);
@@ -15,9 +17,12 @@ function LoginPage() {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setError(null);
-		const data = { username, password }
+		const data = { username: inputUsername, password }
 		try {
 			await loginUser(data);
+
+			setUsername(inputUsername)
+			localStorage.setItem('username', inputUsername)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
 		}
@@ -32,8 +37,8 @@ function LoginPage() {
 				 <input
 				   type="text"
 				   id="username"
-				   value={username}
-				   onChange={(e) => setUsername(e.target.value)}
+				   value={inputUsername}
+				   onChange={(e) => setInputUsername(e.target.value)}
 				   required
 				 />
 			   </div>
