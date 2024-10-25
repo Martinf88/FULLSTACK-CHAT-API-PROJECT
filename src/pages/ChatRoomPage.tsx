@@ -6,7 +6,7 @@ import useChannels from "../hooks/useChannels";
 import useMessages from "../hooks/useMessages"
 import ChatRoomNavBar from "../components/ChatRoomNavBar";
 import ChatRoomMessages from "../components/ChatRoomMessages";
-import SendMessage from "../components/sendMessage";
+import SendMessage from "../components/ChatRoomSendMessage";
 
 // TODO: Feth messages again after posting
 
