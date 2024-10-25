@@ -45,7 +45,7 @@
   }
   
   .chat-room__empty-message {
-	color: #666; 
+	color: var(--clr-rose); 
 	text-align: center; 
   }
 

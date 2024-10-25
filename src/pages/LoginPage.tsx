@@ -10,7 +10,6 @@ function LoginPage() {
 	const [inputUsername, setInputUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string | null>(null);
-	const username = useAuthStore(state => state.username);
 	const setUsername = useAuthStore(state => state.setUsername);
 	const { loginUser } = useLogin()
 	

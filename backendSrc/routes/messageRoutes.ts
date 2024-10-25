@@ -1,14 +1,17 @@
 import express, { Response, Router, Request } from 'express'
 import { WithId } from 'mongodb'
 import { Message } from '../models/messageModel.js'
-import { getAllMessages, getMessagesByChannelId } from '../database/messageCollection.js'
+import { getAllMessages, getMessagesByChannelId, postMessage } from '../database/messageCollection.js'
 import { Channel } from '../models/channelModel.js'
 import { getChannelById } from '../database/channelCollection.js'
 import jwt from 'jsonwebtoken'
+import { validateMessage } from '../validation/validateMessage.js'
 
 
 export const messagesRouter: Router = express.Router()
 
+
+// --GET--
 messagesRouter.get('/', async ( _, res: Response) => {
 	try {
 		const messages: WithId<Message>[] = await getAllMessages()
@@ -60,4 +63,26 @@ messagesRouter.get('/:channelId', async ( req: Request, res: Response) => {
         res.sendStatus(500);
 	}
 })
+
+
+// --POST--
+messagesRouter.post('/', async (req: Request, res: Response) => {
+    try {
+        const validation = await validateMessage(req.body);
+
+        if (!validation.success) {
+            res.status(400).json({ error: validation.error })
+			return
+        }
+
+        const newMessage: Message = validation.value;
+
+        await postMessage(newMessage);
+        res.sendStatus(201)
+
+    } catch (error) {
+        console.error('Error adding item: ', error);
+        res.sendStatus(500)
+    }
+});
 
