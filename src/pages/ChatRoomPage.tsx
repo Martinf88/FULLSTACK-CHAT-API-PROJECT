@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useChatStore } from "../store/chatStore"
 import { useAuthStore } from "../store/authStore"
 import useUsers from "../hooks/useUsers";
@@ -7,7 +7,6 @@ import useMessages from "../hooks/useMessages"
 import ChatRoomNavBar from "../components/ChatRoomNavBar";
 import ChatRoomMessages from "../components/ChatRoomMessages";
 import SendMessage from "../components/sendMessage";
-
 
 // TODO: Feth messages again after posting
 
