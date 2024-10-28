@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useAuthStore } from "../store/authStore";
 
 interface SendMessageProps {
 	channelId: string;
-	senderId: string;
+	senderId: string | null;
 	isLocked: boolean;
+	refreshMessages: () => void;
 }
 
 
-const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, senderId} ) => {
+const SendMessage: React.FC<SendMessageProps> = ( {channelId, senderId, refreshMessages} ) => {
 	const [messageContent, setMessageContent] = useState<string>("");
-	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 
 	const handleSendMessage = async () => {
 		if (!messageContent.trim()) return;
@@ -32,7 +31,8 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, senderId
 		  });
 	
 		  if (response.ok) {
-			setMessageContent(""); 
+			setMessageContent("");
+			refreshMessages();
 		  } else {
 			console.error("Failed to send message");
 		  }
@@ -41,8 +41,8 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, senderId
 		}
 	  };
 	
+
 	return (
-		 (!isLocked || isLoggedIn) && (
 			<div className="chat-room__send-message-wrapper">
 				<input 
 				className="chat-room__message-input" 
@@ -69,7 +69,6 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, senderId
 			</div>
   
 			)
-	)
 }
 
 

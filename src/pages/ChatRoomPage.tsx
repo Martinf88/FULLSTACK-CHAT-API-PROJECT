@@ -21,12 +21,12 @@ function ChatRoomPage() {
         return <p>Error: Channel ID is required.</p>;
     }
 
-	const { error: messageError, messages, isLoading: isMessagesLoading } = useMessages(channelId); 
+	const { error: messageError, messages, isLoading: isMessagesLoading, fetchMessages, } = useMessages(channelId); 
 	const { error: userError, isLoading: isUserLoading } = useUsers();
 	const { error: channelError, isLoading: isChannelLoading } = useChannels();
 	
 	const channel = channels.find((ch) => ch._id === channelId)
-	
+	const currentUser = users.find((user) => user.username === username);
 
 	if (isMessagesLoading || isChannelLoading || isUserLoading) {
 		return <p>Loading data...</p>;
@@ -44,15 +44,17 @@ function ChatRoomPage() {
 		);
 	}
 
-	const currentUser = users.find((user) => user.username === username);
+	
 	const senderId = currentUser ? currentUser._id : null;
+
+	const shouldShowInput = !channel.isLocked || (channel.isLocked && isLoggedIn && senderId);
 
 	return (
 		<div className="chat-room">
 			<ChatRoomNavBar channelName={channel.name} />
 			<ChatRoomMessages messages={messages} messageError={messageError} />
-			{(!channel.isLocked || isLoggedIn) && senderId && (
-				<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} />
+			{shouldShowInput && (
+				<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} refreshMessages={fetchMessages} />
 			)}
 		</div>
 	  );
