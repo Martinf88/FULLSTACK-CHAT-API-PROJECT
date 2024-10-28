@@ -1,22 +1,6 @@
-import { InsertOneResult, ObjectId, WithId } from "mongodb";
+import { InsertOneResult, WithId } from "mongodb";
 import { Message } from "../models/messageModel";
-import { User } from '../models/userModel.js'
 import { getDB } from "./database.js";
-import { Channel } from "../models/channelModel.js";
-
-
-//GET senderId and productId for display in cart
-async function getUserById(senderId: string): Promise<WithId<User> | null> {
-	const db = getDB()
-	const userCol = db.collection<User>('users')
-	return await userCol.findOne({ _id: new ObjectId(senderId) });
-}
-
-async function getChannelById(channelId: string): Promise<WithId<Channel> | null> {
-	const db = getDB()
-	const channelCol = db.collection<Channel>('channels')
-	return await channelCol.findOne({ _id: new ObjectId(channelId)})
-}
 
 async function getAllMessages(): Promise<WithId<Message>[]> {
     try {
@@ -63,4 +47,4 @@ async function postMessage(newMessage: Message): Promise<InsertOneResult<Message
 }
 
 
-export { getAllMessages, getMessagesByChannelId, postMessage, getUserById, getChannelById };
+export { getAllMessages, getMessagesByChannelId, postMessage };

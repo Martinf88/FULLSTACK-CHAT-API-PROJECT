@@ -1,8 +1,5 @@
 import Joi from "joi";
-// import { ObjectId } from "mongodb";
 import { Message } from "../models/messageModel.js";
-// import { getChannelById, getUserById } from "../database/messageCollection.js";
-
 
 type ValidationResult = ValidationSuccess | ValidationFailure
 
