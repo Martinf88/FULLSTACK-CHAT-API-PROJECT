@@ -75,15 +75,14 @@ messagesRouter.post('/', async (req: Request, res: Response) => {
 			return
         }
 
-        const newMessage: Message = validation.value 
+        const newMessage: Message = {
+			...validation.value,
+			senderId: validation.value.senderId || 'Guest'
+		};
 
-        const result = await postMessage(newMessage);
+        await postMessage(newMessage);
 
-		res.status(201).json({
-			_id: result.insertedId,
-			...newMessage,
-			isGuest: !newMessage.senderId
-		})
+		res.status(201).json(newMessage)
 
     } catch (error) {
         console.error('Error adding item: ', error);

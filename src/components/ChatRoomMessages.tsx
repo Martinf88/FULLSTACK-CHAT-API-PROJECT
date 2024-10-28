@@ -21,7 +21,7 @@ const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ( { messages, messageE
 					<div key={message._id}  className="chat-room__message-wrapper">
 				 		 <p className="chat-room__message">
 							<span className="chat-room__user">
-							{user ? user.username : 'Unknown User'}
+							{user ? user.username : message.senderId}
 							</span>
 							<span className="chat-room__content">
 							{message.content}
