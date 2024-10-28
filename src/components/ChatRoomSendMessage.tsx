@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { useAuthStore } from "../store/authStore";
 
 interface SendMessageProps {
 	channelId: string;
 	senderId: string;
 	isLocked: boolean;
-	isLoggedIn: boolean;
 }
 
 
-const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, isLoggedIn, senderId} ) => {
+const SendMessage: React.FC<SendMessageProps> = ( {channelId, isLocked, senderId} ) => {
 	const [messageContent, setMessageContent] = useState<string>("");
+	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 
 	const handleSendMessage = async () => {
 		if (!messageContent.trim()) return;

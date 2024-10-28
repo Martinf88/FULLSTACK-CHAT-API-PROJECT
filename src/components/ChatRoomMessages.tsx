@@ -1,14 +1,15 @@
-import { User } from "../models/userModel";
 import { Message } from "../models/messageModel";
+import { useAuthStore } from "../store/authStore";
 
 interface ChatRoomMessagesProps {
 	messages: Message[];
-	users: User[];
-	isLoggedIn: boolean;
 	messageError: string | null;
 }
 
-const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ( { messages, users, isLoggedIn, messageError } ) => {
+const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ( { messages, messageError } ) => {
+	const users = useAuthStore(state => state.users)
+	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
+
 	return (
 		<div className="chat-room__messages">
 			{messages.length > 0 ? (

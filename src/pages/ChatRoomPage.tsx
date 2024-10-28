@@ -50,12 +50,10 @@ function ChatRoomPage() {
 	return (
 		<div className="chat-room">
 			<ChatRoomNavBar channelName={channel.name} />
-			<ChatRoomMessages messages={messages} users={users} isLoggedIn={isLoggedIn} messageError={messageError} />
+			<ChatRoomMessages messages={messages} messageError={messageError} />
 			{(!channel.isLocked || isLoggedIn) && senderId && (
-				<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} isLoggedIn={isLoggedIn} />
+				<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} />
 			)}
-
-		
 		</div>
 	  );
 }
