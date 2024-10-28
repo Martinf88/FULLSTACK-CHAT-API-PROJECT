@@ -24,12 +24,6 @@ const newMessageSchema: Joi.ObjectSchema<Message> = Joi.object<Message>({
 	
 })
 
-const updateMessageSchema: Joi.ObjectSchema<Message> = Joi.object<Message>({
-	content: Joi.string().optional(),
-	channelId: Joi.string().optional(),
-	senderId: Joi.string().allow(null),
-}).min(1)
-
 
 async function validateMessage(newMessage: Message): Promise<ValidationResult>{
     const { error, value } = newMessageSchema.validate(newMessage);
@@ -42,4 +36,4 @@ async function validateMessage(newMessage: Message): Promise<ValidationResult>{
 }
 
 
-export { newMessageSchema, updateMessageSchema, validateMessage } 
+export { newMessageSchema, validateMessage } 
