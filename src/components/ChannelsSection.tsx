@@ -1,6 +1,6 @@
 import { Channel } from "../models/channelModel";
-import OpenChannelsList from "./OpenChannelsList";
-import LockedChannelsList from "./LockedChannelsList";
+import OpenChannelsList from "./subComponents/OpenChannelsList";
+import LockedChannelsList from "./subComponents/LockedChannelsList";
 
 interface ChannelsSectionProps {
 	channels: Channel[]

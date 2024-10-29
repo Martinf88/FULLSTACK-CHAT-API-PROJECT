@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Channel } from "../models/channelModel"
+import { Channel } from "../../models/channelModel";
 
 interface LockedChannelsListProps {
 	lockedChannels: Channel[];

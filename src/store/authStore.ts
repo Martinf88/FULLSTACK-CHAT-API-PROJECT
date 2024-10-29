@@ -26,4 +26,5 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
 	users: [],
 	setUsers: (users: User[]) => set({ users }),
+
 }));

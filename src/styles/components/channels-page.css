@@ -1,7 +1,6 @@
 .chat-rooms-section {
 	display: flex;
 	justify-content: space-between;
-	gap: 1rem;
 	min-height: calc(85vh);
 	margin-bottom: 2rem;
 }
@@ -13,10 +12,7 @@
 	padding: 0.5rem 1rem;
 }
 
-.chat-rooms-section__dm {
-	padding-left: 1rem;
-	padding-top: 0.3rem;
-}
+
 
 .channels__title {
 	font-size: var(--size-lg);
