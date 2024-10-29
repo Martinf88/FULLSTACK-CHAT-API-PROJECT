@@ -1,18 +1,19 @@
-import express, { Response, Router } from 'express'
+import express, { Response, Router, Request } from 'express'
 import { WithId } from 'mongodb'
 
 import { DirectMessage } from '../models/directMessageModel.js'
-import { getAllDirectMessages } from '../database/directMessagCollection.js'
+import { getDM } from '../database/directMessagCollection.js'
 
 
 export const directMessagesRouter: Router = express.Router()
 
-directMessagesRouter.get('/', async ( _, res: Response) => {
+directMessagesRouter.get('/:senderId/:receiverId', async ( req: Request, res: Response) => {
+	const { senderId, receiverId } = req.params
 	try {
-		const messages: WithId<DirectMessage>[] = await getAllDirectMessages()
-		res.send(messages);
+		const dm: WithId<DirectMessage>[] = await getDM(senderId, receiverId)
+
+		res.status(200).json(dm);
 	} catch (error) {
-		console.error('Error retrieving DMs:', error);
-        res.sendStatus(500);
+		res.status(500).json({ error: 'Could not fetch direct messages' });
 	}
 })

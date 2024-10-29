@@ -15,4 +15,22 @@ async function getAllDirectMessages(): Promise<WithId<DirectMessage>[]> {
     } 
 }
 
-export { getAllDirectMessages }
+async function getDM(senderId: string, receiverId: string): Promise<WithId<DirectMessage>[]> {
+	try {
+		const db = getDB()
+		const dm = await db.collection<DirectMessage>('directMessages').find({
+			$or: [
+				{ senderId, receiverId},
+				{ senderId: receiverId, receiverId: senderId}
+			],
+		}).toArray();
+
+		return dm
+	} catch (error) {
+		console.error(' Error fetching DMs: ', error);
+		throw new Error("Could not fetch DMs");
+		
+	}
+}
+
+export { getAllDirectMessages, getDM }
