@@ -1,6 +1,21 @@
-import { WithId } from "mongodb";
+import { InsertOneResult, WithId } from "mongodb";
 import { DirectMessage } from "../models/directMessageModel";
 import { getDB } from "./database.js";
+
+
+async function postDM(dm: DirectMessage): Promise<InsertOneResult<DirectMessage>> {
+	try {
+		const db = getDB();
+		const dmCol =  db.collection<DirectMessage>('directMessages')
+
+		const result: InsertOneResult<DirectMessage> = await dmCol.insertOne(dm)
+		
+		return result;
+	} catch (error) {
+		console.error('Error posting new message: ', error);
+		throw new Error("Could not post new message");
+	}
+}
 
 async function getAllDirectMessages(): Promise<WithId<DirectMessage>[]> {
     try {
@@ -33,4 +48,4 @@ async function getDM(senderId: string, receiverId: string): Promise<WithId<Direc
 	}
 }
 
-export { getAllDirectMessages, getDM }
+export { getAllDirectMessages, getDM, postDM }
