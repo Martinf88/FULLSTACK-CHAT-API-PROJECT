@@ -67,6 +67,24 @@
 	color: var(--clr-gold);
 	width: 36px;
   }
+
+  .wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+
+  .input {
+	background-color: var(--clr-lightgrey);
+    border-radius: 12px;
+	border: none;
+	color: var(--clr-light);
+	padding: 0.1rem 0.5rem;
+  }
+
+  .input::placeholder {
+	color: var(--clr-light);
+}
   
   /* .loading {
 	  filter: blur(40px) grayscale(100%);

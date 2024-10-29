@@ -10,7 +10,10 @@ function UsersList(  ) {
 
 	return(
 		<div className="channels-section">
+			<div className="wrapper">
 				<h1 className="channels__title">Users</h1>
+				<input className="input" type="text" placeholder="Find user..." />
+			</div>
 				{otherUsers.map(user => (
 					<Link className="channel-link" to={'/dm'} key={user._id}>
 						<span> {user.username} </span>

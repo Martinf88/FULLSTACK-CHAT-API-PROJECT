@@ -45,7 +45,7 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, senderId, refreshM
 	return (
 			<div className="chat-room__send-message-wrapper">
 				<input 
-				className="chat-room__message-input" 
+				className="chat-room__message-input input" 
 				type="text" 
 				placeholder="write a message"
 				value={messageContent}
