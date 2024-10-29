@@ -6,6 +6,9 @@ const useDirectMessages = (senderId: string, receiverId: string) => {
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
+	console.log('UseDirectMessages is called');
+	
+
 	const fetchDirectMessages = useCallback(async () => {
 		setIsLoading(true);
 		const token = localStorage.getItem("jwtToken");

@@ -4,7 +4,7 @@ interface SendMessageProps {
 	channelId?: string;
 	receiverId?: string;
 	senderId: string | null;
-	isLocked: boolean;
+	isLocked?: boolean;
 	refreshMessages: () => void;
 }
 

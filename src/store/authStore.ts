@@ -8,6 +8,8 @@ interface AuthStore {
 	setUsername: (value: string) => void;
 	users: User[];
 	setUsers: (value: User[]) => void;
+	receiverId: string | null;
+	setReceiverId: (id: string) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -26,5 +28,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
 	users: [],
 	setUsers: (users: User[]) => set({ users }),
+
+	receiverId: null,
+  	setReceiverId: (id) => set({ receiverId: id }),
 
 }));

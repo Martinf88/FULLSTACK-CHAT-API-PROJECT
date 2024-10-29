@@ -6,6 +6,11 @@ function UsersList(  ) {
 	const users: User[] = useAuthStore(state => state.users)
 	const username: string = useAuthStore(state => state.username)
 	const otherUsers = users.filter(user => user.username !== username)
+	const setReceiverId = useAuthStore((state) => state.setReceiverId)
+
+	const handleUserClick = (userId: string) => {
+		setReceiverId(userId)
+	}
 
 
 	return(
@@ -15,7 +20,12 @@ function UsersList(  ) {
 				<input className="input" type="text" placeholder="Find user..." />
 			</div>
 				{otherUsers.map(user => (
-					<Link className="channel-link" to={'/dm'} key={user._id}>
+					<Link 
+						className="channel-link" 
+						to={'/dm'} 
+						key={user._id}
+						onClick={() => handleUserClick(user._id)}
+					>
 						<span> {user.username} </span>
 					</Link>
 				))}
