@@ -54,7 +54,7 @@ function ChatRoomPage() {
 			<ChatRoomNavBar channelName={channel.name} />
 			<ChatRoomMessages messages={messages} messageError={messageError} />
 			{shouldShowInput && (
-				<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} refreshMessages={fetchMessages} />
+			<SendMessage channelId={channelId} senderId={senderId} isLocked={channel.isLocked} refreshMessages={fetchMessages} />
 			)}
 		</div>
 	  );

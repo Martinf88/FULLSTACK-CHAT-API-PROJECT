@@ -40,7 +40,7 @@ const useMessages = (channelId: string) => {
 
 	useEffect(() => {
 		fetchMessages()
-	}, [channelId])
+	}, [channelId, fetchMessages])
 
 	return {messages, error, isLoading, fetchMessages}
 }
