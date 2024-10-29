@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 interface SendMessageProps {
-	channelId: string;
+	channelId?: string;
+	receiverId?: string;
 	senderId: string | null;
 	isLocked: boolean;
 	refreshMessages: () => void;
 }
 
 
-const SendMessage: React.FC<SendMessageProps> = ( {channelId, senderId, refreshMessages} ) => {
+const SendMessage: React.FC<SendMessageProps> = ( {channelId, receiverId, senderId, refreshMessages} ) => {
 	const [messageContent, setMessageContent] = useState<string>("");
 
 	const handleSendMessage = async () => {
@@ -17,17 +18,30 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, senderId, refreshM
 		const token = localStorage.getItem("jwtToken");
 	
 		try {
-		  const response = await fetch(`/api/messages/`, {
+			const url = receiverId 
+				? `/api/directMessages`
+				: `/api/messages`;
+			
+			const body = receiverId
+				? JSON.stringify({
+					content: messageContent,
+					senderId,
+					receiverId,
+				})
+				: JSON.stringify({
+					content: messageContent,
+					channelId,
+					senderId,
+				})
+
+
+		  const response = await fetch(url, {
 			method: "POST",
 			headers: {
 			  "Content-Type": "application/json",
 			  Authorization: token || "",
 			},
-			body: JSON.stringify({
-				content: messageContent,
-				channelId,
-				senderId,
-			}),
+			body,
 		  });
 	
 		  if (response.ok) {
@@ -47,7 +61,7 @@ const SendMessage: React.FC<SendMessageProps> = ( {channelId, senderId, refreshM
 				<input 
 				className="chat-room__message-input input" 
 				type="text" 
-				placeholder="write a message"
+				placeholder="Send message..."
 				value={messageContent}
 				onChange={(e) => setMessageContent(e.target.value)} 
 				/>
