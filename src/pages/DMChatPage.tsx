@@ -47,21 +47,21 @@ function DMChatPage() {
 	}
 
 	return (
-		<div className="dm-chat-container">
-		<Link to={'/channels'} className="back-link">BACK TO CHANNELS</Link>
-		<h1 className="chat-header"> {currentReceiver ? currentReceiver.username : "Unknown User"} </h1>
-		<div className="messages-container">
+		<div className="dm-chat-page">
+		<Link to={'/channels'} className="dm-chat-page__back-link">BACK TO CHANNELS</Link>
+		<h1 className="dm-chat-page__header"> {currentReceiver ? currentReceiver.username : "Unknown User"} </h1>
+		<div className="dm-chat-page__messages-container">
 			{directMessages.map((directMessage: DirectMessage) => {
 				const sender = users.find(user => user._id === directMessage.senderId);
 				const isCurrentUserSender = directMessage.senderId === senderId;
 				const displayName = isCurrentUserSender ? "You" : (sender?.username || "Unknown User");
 
 				return (
-					<div key={directMessage._id} className={`message-card ${isCurrentUserSender ? 'sent' : 'received'}`}>
-						<div className="message-header">
-							<span className="display-name">{displayName}</span>
+					<div key={directMessage._id} className={`dm-chat-page__message-card dm-chat-page__message-card--${isCurrentUserSender ? 'sent' : 'received'}`}>
+						<div className="dm-chat-page__message-header">
+							<span className="ddm-chat-page__display-name">{displayName}</span>
 						</div>
-						<div className="message-content">
+						<div className="dm-chat-page__message-content">
 							<p>{directMessage.content}</p>
 						</div>
 					</div>

@@ -1,40 +1,50 @@
-.dm-chat-container {
-
-}
-
-.back-link {
-
-}
-
-.chat-header {
-
-}
-
-.messages-container {
-
-}
-
-.message-card {
-
-}
-
-.sent {
-
-
-}
-
-.received {
-
-}
-
-.message-header {
-
-}
-
-.timestamp {
-
-}
-
-.message-content {
-
-}
+ .dm-chat-page__container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	padding: 1rem;
+  }
+  
+  .dm-chat-page__back-link {
+	margin-bottom: 1rem;
+  }
+  
+  .dm-chat-page__header {
+	font-size: var(--size-4xl);
+  }
+  
+  .dm-chat-page__messages-container {
+	flex: 1;
+	overflow-y: auto; 
+  }
+  
+  .dm-chat-page__message-card {
+	padding: 10px;
+	margin: 5px 0;
+  }
+  
+  .dm-chat-page__message-card--sent {
+	background-color: var(--clr-gold);
+	color: var(--clr-dark);
+	align-self: flex-end;
+  }
+  
+  .dm-chat-page__message-card--received {
+	background-color: var(--clr-lightgrey);
+	align-self: flex-start; 
+  }
+  
+  .dm-chat-page__message-header {
+	font-weight: bold;
+  }
+  
+  .dm-chat-page__display-name {
+	
+  }
+  
+  .dm-chat-page__loading,
+  .dm-chat-page__error {
+	text-align: center;
+	margin-top: 2rem;
+  }
+  
