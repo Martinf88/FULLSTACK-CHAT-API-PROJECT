@@ -4,9 +4,9 @@ import { useAuthStore } from "../store/authStore"
 import useUsers from "../hooks/useUsers";
 import useChannels from "../hooks/useChannels";
 import useMessages from "../hooks/useMessages"
-import ChatRoomNavBar from "../components/ChatRoomNavBar";
-import ChatRoomMessages from "../components/ChatRoomMessages";
-import SendMessage from "../components/ChatRoomSendMessage";
+import ChatRoomNavBar from "../components/chatroom/ChatRoomNavBar";
+import ChatRoomMessages from "../components/chatroom/ChatRoomMessages";
+import SendMessage from "../components/chatroom/ChatRoomSendMessage";
 
 // TODO: Feth messages again after posting
 

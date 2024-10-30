@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
-import SendMessage from "../components/ChatRoomSendMessage"
+import SendMessage from "../components/chatroom/ChatRoomSendMessage"
 import { useAuthStore } from "../store/authStore"
 import useDirectMessages from "../hooks/useDirectMessages";
 
 function DMChatPage() {
-	const users = useAuthStore(state => state.users)
-	const username = useAuthStore((state) => state.username);
-	const receiverId = useAuthStore((state) => state.receiverId)
-	
+	const { users, username, receiverId } = useAuthStore(state => ({
+		users: state.users,
+		username: state.username,
+		receiverId: state.receiverId,
+	}))
 	const currentUser = users.find((user) => user.username === username);
 	const senderId = currentUser ? currentUser._id : null;
 

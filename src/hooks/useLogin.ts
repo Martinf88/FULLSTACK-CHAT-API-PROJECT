@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
+import useUsers from "../hooks/useUsers";
 
 const useLogin = () => {
-	const isLoggedIn = useAuthStore(state => state.isLoggedIn);
-	const setIsLoggedIn = useAuthStore(state => state.setIsLoggedIn);
-	const setUsername = useAuthStore(state => state.setUsername)
+	const { setIsLoggedIn, setUsername } = useAuthStore(state => ({
+        setIsLoggedIn: state.setIsLoggedIn,
+        setUsername: state.setUsername
+    }));
 	const navigate = useNavigate();
 
-
+	const users = useUsers();
 
 	const loginUser = async (data: { username: string, password: string }) => {
 		try {
@@ -28,11 +30,11 @@ const useLogin = () => {
 	
 			if(responseData.token) {
 				localStorage.setItem('jwtToken', responseData.token)
+				localStorage.setItem('username', data.username);
 
-				if(!isLoggedIn){
-					setIsLoggedIn(true)
-				}
+				setIsLoggedIn(true)
 				setUsername(data.username)
+				
 				navigate('/')
 			} else {
 				  throw new Error('Login failed. Token not found in response.');
@@ -46,7 +48,7 @@ const useLogin = () => {
             throw new Error(errorMessage);
         }
 	}
-	return { loginUser };
+	return { loginUser, users };
 }
 
 

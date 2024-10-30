@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom"
 import { useAuthStore } from "../store/authStore"
-import { User } from "../models/userModel"
 
 function UsersList(  ) {
-	const users: User[] = useAuthStore(state => state.users)
-	const username: string = useAuthStore(state => state.username)
+	const { users, username, setReceiverId } = useAuthStore( state => ({
+		users: state.users,
+		username: state.username,
+		setReceiverId: state.setReceiverId,
+	}))
 	const otherUsers = users.filter(user => user.username !== username)
-	const setReceiverId = useAuthStore((state) => state.setReceiverId)
 
 	const handleUserClick = (userId: string) => {
 		setReceiverId(userId)
 	}
-
 
 	return(
 		<div className="channels-section">
@@ -29,10 +29,8 @@ function UsersList(  ) {
 						<span> {user.username} </span>
 					</Link>
 				))}
-				
 		</div>
 	)
 }
-
 
 export default UsersList

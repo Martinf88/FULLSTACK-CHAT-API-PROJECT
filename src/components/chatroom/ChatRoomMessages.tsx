@@ -1,5 +1,5 @@
-import { Message } from "../models/messageModel";
-import { useAuthStore } from "../store/authStore";
+import { Message } from "../../models/messageModel";
+import { useAuthStore } from "../../store/authStore";
 
 interface ChatRoomMessagesProps {
 	messages: Message[];
