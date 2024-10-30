@@ -8,8 +8,6 @@ import ChatRoomNavBar from "../components/chatroom/ChatRoomNavBar";
 import ChatRoomMessages from "../components/chatroom/ChatRoomMessages";
 import SendMessage from "../components/chatroom/ChatRoomSendMessage";
 
-// TODO: Feth messages again after posting
-
 function ChatRoomPage() {
 	const { channelId } = useParams<{ channelId: string }>()
 	const isLoggedIn = useAuthStore(state => state.isLoggedIn)

@@ -7,6 +7,7 @@ import '../styles/components/channels-page.css'
 import '../styles/components/log-in-modal.css'
 import '../styles/components/chat-room-page.css'
 import '../styles/components/side-menu.css'
+import '../styles/components/dm-chat-page.css'
 import '../styles/utils.css'
 import NavBar from '../components/NavBar'
 import { Outlet, useLocation } from 'react-router-dom'
@@ -14,7 +15,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 function Root() {
 	const location = useLocation()
 
-	const isLoginPage = location.pathname === '/login';
+	const isLoginPage = location.pathname === '/';
 
 
 	return (

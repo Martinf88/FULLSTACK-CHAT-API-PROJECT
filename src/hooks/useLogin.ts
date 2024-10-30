@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
-import useUsers from "../hooks/useUsers";
+import useUsers from "./useUsers";
 
 const useLogin = () => {
-	const { setIsLoggedIn, setUsername } = useAuthStore(state => ({
-        setIsLoggedIn: state.setIsLoggedIn,
-        setUsername: state.setUsername
-    }));
-	const navigate = useNavigate();
+	const setIsLoggedIn = useAuthStore(state => state.setIsLoggedIn)
+	const setUsername = useAuthStore(state => state.setUsername)
 
-	const users = useUsers();
+	const navigate = useNavigate();
+	
+	const { fetchUsers } = useUsers();
+
 
 	const loginUser = async (data: { username: string, password: string }) => {
 		try {
@@ -34,8 +34,10 @@ const useLogin = () => {
 
 				setIsLoggedIn(true)
 				setUsername(data.username)
+
+				await fetchUsers();
 				
-				navigate('/')
+				navigate('/channels')
 			} else {
 				  throw new Error('Login failed. Token not found in response.');
 			}
@@ -48,7 +50,7 @@ const useLogin = () => {
             throw new Error(errorMessage);
         }
 	}
-	return { loginUser, users };
+	return { loginUser };
 }
 
 

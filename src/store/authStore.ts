@@ -26,10 +26,16 @@ export const useAuthStore = create<AuthStore>((set) => ({
 		set({ username });
 	},
 
-	users: [],
-	setUsers: (users: User[]) => set({ users }),
+	users: JSON.parse(localStorage.getItem('users') || '[]') as User[],
+	setUsers: (users: User[]) => {
+		set({ users });
+		localStorage.setItem('users', JSON.stringify(users));
+	},
 
-	receiverId: null,
-  	setReceiverId: (id) => set({ receiverId: id }),
+	receiverId: localStorage.getItem('receiverId') || null,
+	setReceiverId: (id: string) => {
+		set({ receiverId: id });
+		localStorage.setItem('receiverId', id);
+	},
 
 }));

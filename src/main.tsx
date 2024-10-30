@@ -15,12 +15,12 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage/>,
 		children: [
 			{
-				path: "",
-				element: <ChannelsPage/>
+				path: '/',
+				element: <LoginPage/>
 			},
 			{
-				path: '/login',
-				element: <LoginPage/>
+				path: "/channels",
+				element: <ChannelsPage/>
 			},
 			{
 				path: '/chatroom/:channelId',

@@ -2,11 +2,9 @@ import { Link } from "react-router-dom"
 import { useAuthStore } from "../store/authStore"
 
 function UsersList(  ) {
-	const { users, username, setReceiverId } = useAuthStore( state => ({
-		users: state.users,
-		username: state.username,
-		setReceiverId: state.setReceiverId,
-	}))
+	const users = useAuthStore(state => state.users)
+	const username = useAuthStore(state => state.username)
+	const setReceiverId = useAuthStore(state => state.setReceiverId)
 	const otherUsers = users.filter(user => user.username !== username)
 
 	const handleUserClick = (userId: string) => {

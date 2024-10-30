@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 
-// TODO: Fetcha users och dm's vid inloggning
-
 function LoginPage() {
 	const [inputUsername, setInputUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
@@ -49,7 +47,7 @@ function LoginPage() {
 				 Log in
 			   </button>
 			   {error && <p className="error-message"> {error} </p>}
-			   <Link  to={'/'}>Continue as guest</Link>
+			   <Link  to={'/channels'}>Continue as guest</Link>
 			</form>
 		</div>
 	)
