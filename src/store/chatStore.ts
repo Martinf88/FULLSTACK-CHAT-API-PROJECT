@@ -41,6 +41,7 @@ export const useChatStore = create<ChatStore>( (set) => ({
 		localStorage.removeItem('channels')
 		localStorage.removeItem('directMessages')
 		localStorage.removeItem('users')
+		localStorage.removeItem('messages')
 		
 		set({
 			showUsers: false,

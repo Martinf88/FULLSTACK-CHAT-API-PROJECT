@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
-import { Message } from "../models/messageModel";
+import { useChatStore } from "../store/chatStore";
 
 const useMessages = (channelId: string) => {
-	const [messages, setMessages] = useState<Message[]>([])
+	const messages = useChatStore(state => state.messages)
+	const setMessages = useChatStore(state => state.setMessages)
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
