@@ -10,17 +10,34 @@ interface ChatStore {
 	setMessages: (value: Message[]) => void;
 	directMessages: DirectMessage[];
 	setDirectmessages: (value: DirectMessage[]) => void;
+	showUsers: boolean
+	setShowUsers: (value: boolean) => void;
 }
 
 export const useChatStore = create<ChatStore>( (set) => ({
-	channels: [],
-	setChannels: (channels: Channel[]) => set({ channels }),
+	channels: JSON.parse(localStorage.getItem('channels') || '[]') as Channel[],
+	setChannels: (channels: Channel[]) => {
+		set({ channels });
+		localStorage.setItem('channels', JSON.stringify(channels))
+	},
 
-	messages: [],
-	setMessages: (messages: Message[]) => set({ messages }),
+	messages: JSON.parse(localStorage.getItem('messages') || '[]') as Message[],
+	setMessages: (messages: Message[]) => {
+		set({ messages });
+		localStorage.setItem('messages', JSON.stringify(messages))
+	},
 	
-	directMessages: [],
-	setDirectmessages: (directMessages: DirectMessage[]) => set({ directMessages }),
+	directMessages: JSON.parse(localStorage.getItem('directMessages') || '[]') as DirectMessage[],
+	setDirectmessages: (directMessages: DirectMessage[]) => {
+		set({ directMessages });
+		localStorage.setItem('directMessages', JSON.stringify(directMessages))
+	},
+
+	showUsers: JSON.parse(localStorage.getItem('showUsers') || 'false'),
+	setShowUsers: (showUsers: boolean) => {
+		set({ showUsers });
+		localStorage.setItem('showUsers', JSON.stringify(showUsers));
+	}
 }))
 
 

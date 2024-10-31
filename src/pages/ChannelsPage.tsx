@@ -9,10 +9,12 @@ import UsersList from "../components/UsersList"
 
 function ChannelsPage() {
 	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
-	const [isModalOpen, setIsModalOpen] = useState(false)
-	const [showUsers, setShowUsers] = useState(false)
-	const { error, isLoading } = useChannels()
+	const setShowUsers = useChatStore(state => state.setShowUsers)
+	const showUsers = useChatStore(state => state.showUsers)
 	const channels = useChatStore(state => state.channels)
+	
+	const [isModalOpen, setIsModalOpen] = useState(false)
+	const { error, isLoading } = useChannels()
 
 	const handleShowUsers = () => {
 		if(!isLoggedIn) {
