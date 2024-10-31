@@ -10,6 +10,8 @@ interface AuthStore {
 	setUsers: (value: User[]) => void;
 	receiverId: string | null;
 	setReceiverId: (id: string) => void;
+	isModalOpen: boolean;
+	setIsModalOpen: (value: boolean) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -21,7 +23,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
 	username: localStorage.getItem('username') || '',
 	setUsername: (username: string) => {
-		console.log('Setting username in localStorage:', username);
 		localStorage.setItem('username', username);
 		set({ username });
 	},
@@ -36,6 +37,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
 	setReceiverId: (id: string) => {
 		set({ receiverId: id });
 		localStorage.setItem('receiverId', id);
+	},
+
+	isModalOpen: localStorage.getItem('isModalOpen') === 'true',
+	setIsModalOpen: (value: boolean) => {
+		localStorage.setItem('isModalOpen', String(value));
+		set({ isModalOpen: value });
 	},
 
 }));

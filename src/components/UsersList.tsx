@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuthStore } from "../store/authStore"
+import LogInModal from "./LogInModal"
 
 function UsersList(  ) {
 	const users = useAuthStore(state => state.users)
 	const username = useAuthStore(state => state.username)
 	const setReceiverId = useAuthStore(state => state.setReceiverId)
+	const setIsModalOpen = useAuthStore(state => state.setIsModalOpen)
+	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 	const otherUsers = users.filter(user => user.username !== username)
+	const navigate = useNavigate()
 
-	const handleUserClick = (userId: string) => {
+	const handleUserClick = (e: React.MouseEvent ,userId: string) => {
+		e.preventDefault()
 		setReceiverId(userId)
+		if(!isLoggedIn) {
+			setIsModalOpen(true)
+		} else {
+			navigate('/dm')
+		}
+	}
+
+	const closeModal = () => {
+		setIsModalOpen(false);
 	}
 
 	return(
@@ -22,11 +36,15 @@ function UsersList(  ) {
 						className="channel-link" 
 						to={'/dm'} 
 						key={user._id}
-						onClick={() => handleUserClick(user._id)}
+						onClick={(e) => handleUserClick(e, user._id)}
 					>
 						<span> {user.username} </span>
 					</Link>
 				))}
+				<LogInModal
+				onClose={closeModal}
+				message="Please log in to add a DM"
+			/>
 		</div>
 	)
 }

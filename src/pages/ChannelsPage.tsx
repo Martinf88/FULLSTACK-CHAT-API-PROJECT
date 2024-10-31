@@ -1,33 +1,22 @@
 import { useChatStore } from "../store/chatStore"
-import { useState } from "react"
-import LogInModal from "../components/LogInModal"
 import SideMenu from "../components/SideMenu"
 import ChannelsSection from "../components/channel/ChannelsSection"
 import useChannels from "../hooks/useChannels"
-import { useAuthStore } from "../store/authStore"
 import UsersList from "../components/UsersList"
 
 function ChannelsPage() {
-	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
 	const setShowUsers = useChatStore(state => state.setShowUsers)
 	const showUsers = useChatStore(state => state.showUsers)
 
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	
 	const { error, isLoading } = useChannels()
 
 	const handleShowUsers = () => {
-		if(!isLoggedIn) {
-			setIsModalOpen(true)
-		} else if (isLoggedIn) {
-			setShowUsers(true)
-		}
+		setShowUsers(true)
+		
 	}
 	const handleShowChatRooms = () => {
 		setShowUsers(false)
-	}
-
-	const closeModal = () => {
-		setIsModalOpen(false);
 	}
 
 	if (isLoading) {
@@ -41,13 +30,6 @@ function ChannelsPage() {
 		<section className="chat-rooms-section">
 			<SideMenu handleShowUsers={handleShowUsers} handleShowChatRooms={handleShowChatRooms} />
 			{!showUsers ? ( <ChannelsSection /> ) : ( <UsersList/> )}
-			
-			
-			<LogInModal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				message="Please log in to add a DM"
-			/>
 		</section>
 	)
 }

@@ -1,11 +1,12 @@
+import { useAuthStore } from "../store/authStore";
 
 interface ModalProps {
-	isOpen: boolean;
 	onClose: () => void;
 	message: string;
 }
 
-const LogInModal: React.FC<ModalProps> = ({ isOpen, onClose, message }) => {
+const LogInModal: React.FC<ModalProps> = ({ onClose, message }) => {
+	const isModalOpen = useAuthStore(state => state.isModalOpen)
 
 	const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
 		if(event.currentTarget === event.target) {
@@ -13,7 +14,7 @@ const LogInModal: React.FC<ModalProps> = ({ isOpen, onClose, message }) => {
 		}
 	}
 
-	if (!isOpen) return null;
+	if (!isModalOpen) return null;
 
 	return (
 		<div className="modal-overlay" onClick={handleOverlayClick}>

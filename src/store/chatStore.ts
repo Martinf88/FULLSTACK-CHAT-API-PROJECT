@@ -33,10 +33,10 @@ export const useChatStore = create<ChatStore>( (set) => ({
 		localStorage.setItem('directMessages', JSON.stringify(directMessages))
 	},
 
-	showUsers: JSON.parse(localStorage.getItem('showUsers') || 'false'),
+	showUsers: localStorage.getItem('showUsers') === 'true',
 	setShowUsers: (showUsers: boolean) => {
 		set({ showUsers });
-		localStorage.setItem('showUsers', JSON.stringify(showUsers));
+		localStorage.setItem('showUsers', String(showUsers));
 	}
 }))
 
