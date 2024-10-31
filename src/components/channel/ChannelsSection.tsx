@@ -1,13 +1,9 @@
-import { Channel } from "../../models/channelModel";
 import OpenChannelsList from "./OpenChannelsList";
 import LockedChannelsList from "./LockedChannelsList";
+import { useChatStore } from "../../store/chatStore";
 
-interface ChannelsSectionProps {
-	channels: Channel[]
-}
-
-
-function ChannelsSection( {channels}: ChannelsSectionProps ) {
+function ChannelsSection( ) {
+	const channels = useChatStore(state => state.channels)
 
 
 	const openChannels = channels.filter(channel => !channel.isLocked);
