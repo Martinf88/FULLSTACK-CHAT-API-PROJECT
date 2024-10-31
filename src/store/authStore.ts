@@ -12,6 +12,7 @@ interface AuthStore {
 	setReceiverId: (id: string) => void;
 	isModalOpen: boolean;
 	setIsModalOpen: (value: boolean) => void;
+	logoutAuthStore: () => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -39,10 +40,21 @@ export const useAuthStore = create<AuthStore>((set) => ({
 		localStorage.setItem('receiverId', id);
 	},
 
-	isModalOpen: localStorage.getItem('isModalOpen') === 'true',
-	setIsModalOpen: (value: boolean) => {
-		localStorage.setItem('isModalOpen', String(value));
-		set({ isModalOpen: value });
-	},
+	isModalOpen: false,
+  	setIsModalOpen: (value: boolean) => set({ isModalOpen: value }),
+
+	logoutAuthStore: () => {
+		localStorage.removeItem('isLoggedIn');
+		localStorage.removeItem('username');
+		localStorage.removeItem('receiverId');
+		localStorage.removeItem('jwtToken')
+		
+		set({
+		  isLoggedIn: false,
+		  username: '',
+		  receiverId: null,
+		  isModalOpen: false,
+		});
+	  },
 
 }));

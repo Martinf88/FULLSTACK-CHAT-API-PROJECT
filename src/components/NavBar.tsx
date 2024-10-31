@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom"
 import { useAuthStore } from "../store/authStore";
+import { useChatStore } from "../store/chatStore";
 
 function NavBar () {
 	const isLoggedIn = useAuthStore(state => state.isLoggedIn);
-	const setIsLoggedIn = useAuthStore(state => state.setIsLoggedIn);
 	const username = useAuthStore(state => state.username);
-	const setUsername = useAuthStore(state => state.setUsername);
+	const logoutAuthStore = useAuthStore(state => state.logoutAuthStore)
+	const logOutChatStore = useChatStore(state => state.logoutChatStore)
 
 	const handleLogOut = () => {
-		localStorage.removeItem('isLoggedIn')
-		localStorage.removeItem('username')
-		localStorage.removeItem('jwtToken')
-
-		setIsLoggedIn(false)
-		setUsername('')
+		logoutAuthStore()
+		logOutChatStore()
 	}
 
 	return (

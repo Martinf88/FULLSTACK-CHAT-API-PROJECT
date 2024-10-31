@@ -12,6 +12,7 @@ interface ChatStore {
 	setDirectmessages: (value: DirectMessage[]) => void;
 	showUsers: boolean
 	setShowUsers: (value: boolean) => void;
+	logoutChatStore: () => void;
 }
 
 export const useChatStore = create<ChatStore>( (set) => ({
@@ -33,11 +34,18 @@ export const useChatStore = create<ChatStore>( (set) => ({
 		localStorage.setItem('directMessages', JSON.stringify(directMessages))
 	},
 
-	showUsers: localStorage.getItem('showUsers') === 'true',
-	setShowUsers: (showUsers: boolean) => {
-		set({ showUsers });
-		localStorage.setItem('showUsers', String(showUsers));
-	}
+	showUsers: false,
+	setShowUsers: (value: boolean) => set({ showUsers: value}),
+	
+	logoutChatStore: () => {
+		localStorage.removeItem('channels')
+		localStorage.removeItem('directMessages')
+		localStorage.removeItem('users')
+		
+		set({
+			showUsers: false,
+		});
+	  },
 }))
 
 
