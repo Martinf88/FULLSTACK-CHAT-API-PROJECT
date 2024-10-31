@@ -4,10 +4,10 @@ import { useChatStore } from "../store/chatStore";
 
 const useDirectMessages = (senderId: string, receiverId: string) => {
   const directMessages = useChatStore(state => state.directMessages);
-  const setDirectMessages = useChatStore(state => state.setDirectmessages); // Fixed typo in function name
+  const setDirectMessages = useChatStore(state => state.setDirectmessages)
   
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false); // Start as false
+  const [isLoading, setIsLoading] = useState(false); 
   
   const fetchDirectMessages = useCallback(async () => {
     if (!senderId || !receiverId) {
@@ -17,7 +17,7 @@ const useDirectMessages = (senderId: string, receiverId: string) => {
     }
 
     setIsLoading(true);
-    setError(null); // Reset error state
+    setError(null); 
     
     const token = localStorage.getItem("jwtToken");
     
@@ -28,16 +28,12 @@ const useDirectMessages = (senderId: string, receiverId: string) => {
       return;
     }
 
-    console.log('Fetching direct messages for:', { senderId, receiverId });
-
     try {
       const response = await fetch(`/api/directMessages/${senderId}/${receiverId}`, {
         headers: {
 			Authorization: token ? token : '',
 		},
       });
-
-      console.log('Response status:', response.status);
 
       if (!response.ok) {
         const errorMessage = await response.text();
@@ -50,19 +46,11 @@ const useDirectMessages = (senderId: string, receiverId: string) => {
         } else {
           setError(`Failed to fetch direct messages: ${errorMessage}`);
         }
-        setDirectMessages([]); // Clear messages on error
+        setDirectMessages([]);
         return;
       }
 
       const data = await response.json();
-      console.log('Received direct messages data:', data);
-
-      if (!Array.isArray(data)) {
-        console.error('Received non-array data:', data);
-        setError('Invalid data format received');
-        return;
-      }
-
 
       setDirectMessages(data);
       setError(null);
@@ -70,16 +58,14 @@ const useDirectMessages = (senderId: string, receiverId: string) => {
     } catch (err) {
       console.error('Error fetching direct messages:', err);
       setError("An error occurred while fetching direct messages.");
-      setDirectMessages([]); // Clear messages on error
+      setDirectMessages([]);
     } finally {
       setIsLoading(false);
     }
   }, [senderId, receiverId, setDirectMessages]);
 
-  // Add dependency on setDirectMessages
   useEffect(() => {
     if (senderId && receiverId) {
-      console.log('Effect triggered, fetching messages...');
       fetchDirectMessages();
     }
   }, [senderId, receiverId, fetchDirectMessages]);

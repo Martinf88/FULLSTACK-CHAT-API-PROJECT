@@ -3,6 +3,7 @@
 	justify-content: space-between;
 	min-height: calc(85vh);
 	margin-bottom: 2rem;
+	overflow: hidden;
 }
 
 .channels-section {
@@ -10,13 +11,15 @@
 	flex-grow: 1;
 	border-radius: 12px 0 0 12px;
 	padding: 0.5rem 1rem;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 
 
 .channels__title {
-	font-size: var(--size-lg);
-	text-decoration: underline;
+	font-size: var(--size-xl);
+	border-bottom: 1px solid var(--clr-gold);
 }
 
 .channels__list {
@@ -38,3 +41,34 @@
 	color: var(--clr-gold);
 	text-decoration: none;
 }
+
+
+  /* xs */
+  @media (min-width: 475px) {
+
+  }
+  
+  /* sm */
+  @media (min-width: 640px) {
+
+  }
+  
+  /* md */
+  @media (min-width: 768px) {
+
+  }
+  
+  /* lg */
+  @media (min-width: 1024px) {
+
+  }
+  
+  /* xL */
+  @media (min-width: 1280px) {
+
+  }
+  
+  /* 2xL */
+  @media (min-width: 1536px) {
+
+  }

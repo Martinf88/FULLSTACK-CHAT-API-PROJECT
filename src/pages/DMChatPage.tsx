@@ -47,7 +47,8 @@ function DMChatPage() {
 	}
 
 	return (
-		<div className="dm-chat-page">
+		<div className="container">
+			<div className="dm-chat-page">
 		<Link to={'/channels'} className="dm-chat-page__back-link">BACK TO CHANNELS</Link>
 		<h1 className="dm-chat-page__header"> {currentReceiver ? currentReceiver.username : "Unknown User"} </h1>
 		<div className="dm-chat-page__messages-container">
@@ -69,6 +70,7 @@ function DMChatPage() {
 			})}
 		</div>
 		<SendMessage senderId={senderId} receiverId={receiverId} refreshMessages={refetch} />
+			</div>
 	</div>
     );
 }

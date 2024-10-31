@@ -46,8 +46,9 @@
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	/* padding-left: 1rem;
+	padding-right: 1rem; */
+	border: 1px solid red;
   }
   
   .section {
@@ -56,6 +57,10 @@
 
   .xs-icon {
 	color: var(--clr-gold);
+	width: 18px;
+  }
+  .xs-icon-locked {
+	color: var(--clr-rose);
 	width: 18px;
   }
 

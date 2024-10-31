@@ -1,8 +1,8 @@
- .dm-chat-page__container {
+ .dm-chat-page {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
-	padding: 1rem;
+	flex: 1;
+	background-color: var(--clr-darkgrey);
   }
   
   .dm-chat-page__back-link {
@@ -21,6 +21,7 @@
   .dm-chat-page__message-card {
 	padding: 10px;
 	margin: 5px 0;
+	flex: 1;
   }
   
   .dm-chat-page__message-card--sent {
