@@ -48,7 +48,7 @@ function ChatRoomPage() {
 	const shouldShowInput = !channel.isLocked || (channel.isLocked && isLoggedIn && senderId);
 
 	return (
-		<div className="chat-room">
+		<div className="chat-room container">
 			<ChatRoomNavBar channelName={channel.name} />
 			<ChatRoomMessages messages={messages} messageError={messageError} />
 			{shouldShowInput && (

@@ -1,7 +1,33 @@
-.side-menu{
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	padding: 0.5rem;
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.7rem;
+  background-color: var(--clr-darkgrey);
+  border-right: 2px solid var(--clr-lightgrey);
 }
 
+/* xs */
+@media (min-width: 475px) {
+  .side-menu .large-icon {
+    width: var(--size-5xl);
+  }
+}
+
+/* sm */
+/* @media (min-width: 640px) {
+	
+  } */
+
+/* md */
+@media (min-width: 768px) {
+}
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xL */
+/* @media (min-width: 1280px) {} */
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */

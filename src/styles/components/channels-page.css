@@ -1,74 +1,69 @@
 .chat-rooms-section {
-	display: flex;
-	justify-content: space-between;
-	min-height: calc(85vh);
-	margin-bottom: 2rem;
-	overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  min-height: 90vh;
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 
 .channels-section {
-	background-color: var(--clr-darkgrey);
-	flex-grow: 1;
-	border-radius: 12px 0 0 12px;
-	padding: 0.5rem 1rem;
-	overflow-y: auto;
-	overflow-x: hidden;
+  background-color: var(--clr-darkgrey);
+  flex-grow: 1;
+  /* border-radius: 0px 0 0 12px; */
+  padding: 0.5rem 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-
-
 .channels__title {
-	font-size: var(--size-xl);
-	border-bottom: 1px solid var(--clr-gold);
+  font-size: var(--size-xl);
+  border-bottom: 1px solid var(--clr-gold);
 }
 
 .channels__list {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .locked__title {
-	margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .channel-link {
-	display: flex;
-	align-items: center;
-	padding: 0.5rem 0;
-    border-bottom: 1px solid var(--clr-lightgrey);
-	gap: 0.5rem;
-	color: var(--clr-gold);
-	text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--clr-lightgrey);
+  gap: 0.5rem;
+  color: var(--clr-gold);
+  text-decoration: none;
+  font-size: var(--size-lg);
 }
 
-
-  /* xs */
-  @media (min-width: 475px) {
-
+/* xs */
+@media (min-width: 475px) {
+  .channels__title {
+    font-size: var(--size-2xl);
   }
-  
-  /* sm */
-  @media (min-width: 640px) {
 
+  .channel-link {
+    font-size: var(--size-xl);
+    padding: 0.7rem 0;
   }
-  
-  /* md */
-  @media (min-width: 768px) {
+}
 
-  }
-  
-  /* lg */
-  @media (min-width: 1024px) {
+/* sm */
+/* @media (min-width: 640px) {} */
 
-  }
-  
-  /* xL */
-  @media (min-width: 1280px) {
+/* md */
+/* @media (min-width: 768px) {} */
 
-  }
-  
-  /* 2xL */
-  @media (min-width: 1536px) {
+/* lg */
+/* @media (min-width: 1024px) {} */
 
-  }
+/* xL */
+/* @media (min-width: 1280px) {} */
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */
