@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useAutoScroll } from "../../hooks/useAutoScroll";
 import { Message } from "../../models/messageModel";
 import { useAuthStore } from "../../store/authStore";
 
@@ -13,35 +13,14 @@ const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ({
 }) => {
   const users = useAuthStore((state) => state.users);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
-  // Auto-scroll when new messages arrive
-  useEffect(() => {
-    if (!containerRef.current || !shouldAutoScroll) return;
-
-    const container = containerRef.current;
-    container.scrollTop = container.scrollHeight;
-  }, [messages, shouldAutoScroll]);
-
-  const handleScroll = () => {
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    const isScrollNearBottom =
-      container.scrollHeight - container.scrollTop - container.clientHeight <
-      100;
-
-    setShouldAutoScroll(isScrollNearBottom);
-  };
-
-  // Check if messages fill the container
-  const checkIfFull = () => {
-    if (!containerRef.current) return false;
-    return (
-      containerRef.current.scrollHeight > containerRef.current.clientHeight
-    );
-  };
+  const {
+    containerRef,
+    shouldAutoScroll,
+    scrollToBottom,
+    handleScroll,
+    checkIfFull,
+  } = useAutoScroll<Message[]>([messages]);
 
   return (
     <div className="chat-room__messages-container">
@@ -50,7 +29,7 @@ const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ({
         onScroll={handleScroll}
         className="chat-room__messages"
       >
-        {messages.length > 0 && <div className="chat-room__spacer" />}
+        {/* {messages.length > 0 && <div className="chat-room__spacer" />} */}
 
         {messages.length > 0 ? (
           messages.map((message) => {
@@ -80,13 +59,7 @@ const ChatRoomMessages: React.FC<ChatRoomMessagesProps> = ({
 
       {!shouldAutoScroll && messages.length > 0 && checkIfFull() && (
         <button
-          onClick={() => {
-            containerRef.current?.scrollTo({
-              top: containerRef.current.scrollHeight,
-              behavior: "smooth",
-            });
-            setShouldAutoScroll(true);
-          }}
+          onClick={scrollToBottom}
           className="chat-room__scroll-button"
           aria-label="Scroll to latest messages"
         >
