@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 import LogInModal from "./LogInModal";
+import { useState } from "react";
 
 function UsersList() {
   const users = useAuthStore((state) => state.users);
@@ -8,6 +9,8 @@ function UsersList() {
   const setReceiverId = useAuthStore((state) => state.setReceiverId);
   const setIsModalOpen = useAuthStore((state) => state.setIsModalOpen);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+
+  const [searchTerm, setSearchTerm] = useState("");
   const otherUsers = users.filter((user) => user.username !== username);
   const navigate = useNavigate();
 
@@ -24,6 +27,14 @@ function UsersList() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredUsers = otherUsers.filter((user) =>
+    user.username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="channels-section">
@@ -46,10 +57,16 @@ function UsersList() {
               />
             </svg>
           </i>
-          <input className="input" type="text" placeholder="Find user..." />
+          <input
+            className="input"
+            type="text"
+            placeholder="Find user..."
+            onChange={handleSearch}
+            value={searchTerm}
+          />
         </div>
       </div>
-      {otherUsers.map((user) => (
+      {filteredUsers.map((user) => (
         <Link
           className="channel-link"
           to={"/dm"}
