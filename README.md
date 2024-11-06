@@ -1,11 +1,8 @@
-Sure! Here’s the entire documentation translated into English and formatted in markdown:
-
-```markdown
 # Fullstack Chat API Project
 
 ## Overview
 
-This project is a chat application called Chappy, built with the MERN stack (MongoDB, Express, React, and Node.js). The application allows users to send messages directly to specific users or in channels. It also includes authentication to ensure that only logged-in users can participate in certain channels.
+This is an assignment from school and this school project is a chat application called Elden Chappy, built with the MERN stack (MongoDB, Express, React, and Node.js). The application allows users to send messages directly to specific users or in channels. It also includes authentication to ensure that only logged-in users can participate in certain channels.
 
 ## Features
 
@@ -19,6 +16,7 @@ This project is a chat application called Chappy, built with the MERN stack (Mon
 Follow the steps below to install and run the project locally:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/Martinf88/FULLSTACK-CHAT-API-PROJECT.git
    cd FULLSTACK-CHAT-API-PROJECT
@@ -26,6 +24,7 @@ Follow the steps below to install and run the project locally:
 
 2. **Install dependencies:**
    Install dependencies for both frontend and backend:
+
    ```bash
    npm install
    cd backendSrc
@@ -34,9 +33,11 @@ Follow the steps below to install and run the project locally:
 
 3. **Configure environment variables:**
    Create a `.env` file in the backend folder and add your environment variables:
+
    ```plaintext
-   MONGODB_URI=<your-mongodb-uri>
-   JWT_SECRET=<a-secret-value>
+   CONNECTION_STRING=<your-mongodb-uri>
+   SECRET=<a-secret-value>
+   PORT=<ex. 1337>
    ```
 
 4. **Run the application:**
@@ -46,7 +47,6 @@ Follow the steps below to install and run the project locally:
    ```
    Start the frontend application:
    ```bash
-   cd ../
    npm run dev
    ```
 
@@ -59,6 +59,14 @@ Open your browser and navigate to `http://localhost:????` to use the application
 See below for details about API endpoints:
 
 ### Users
+
+#### Get All Users
+
+- **Method**: `GET`
+- **URL**: `/api/users`
+- **Response**:
+  - **200 OK**: List of users.
+  - **404 Not Found**: If no users exist.
 
 #### Register a User
 
@@ -140,14 +148,3 @@ See below for details about API endpoints:
 - **Response**:
   - **200 OK**: List of messages.
   - **404 Not Found**: If no messages exist for the specified channel.
-
-## Contributing
-
-Feel free to contribute to the project! Create a new branch, make your changes, and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
-```
-
-Now you have the complete documentation in English and formatted in markdown. If you need anything else, just let me know!
