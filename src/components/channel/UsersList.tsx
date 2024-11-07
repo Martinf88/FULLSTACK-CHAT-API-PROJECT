@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/authStore";
-import LogInModal from "./LogInModal";
+import { useAuthStore } from "../../store/authStore";
+import LogInModal from "../LogInModal";
 import { useState } from "react";
 
 function UsersList() {

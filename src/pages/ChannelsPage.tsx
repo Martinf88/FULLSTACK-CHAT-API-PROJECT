@@ -2,7 +2,7 @@ import { useChatStore } from "../store/chatStore";
 import SideMenu from "../components/SideMenu";
 import ChannelsSection from "../components/channel/ChannelsSection";
 import useChannels from "../hooks/useChannels";
-import UsersList from "../components/UsersList";
+import UsersList from "../components/channel/UsersList";
 
 function ChannelsPage() {
   const setShowUsers = useChatStore((state) => state.setShowUsers);

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SendMessage from "../components/chatroom/ChatRoomSendMessage";
 import { useAuthStore } from "../store/authStore";
 import useDirectMessages from "../hooks/useDirectMessages";
-import ChatRoomNavBar from "../components/chatroom/ChatRoomNavBar";
+import ChatRoomNavBar from "../components/navigation/ChatRoomNavBar";
 import DmRoomMessages from "../components/chatroom/DmRoomMessages";
 
 function DMChatPage() {

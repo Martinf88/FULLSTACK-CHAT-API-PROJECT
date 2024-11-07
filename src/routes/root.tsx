@@ -10,7 +10,7 @@ import "../styles/components/side-menu.css";
 import "../styles/components/dm-chat-page.css";
 import "../styles/components/users-list.css";
 import "../styles/utils.css";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/navigation/NavBar";
 import { Outlet, useLocation } from "react-router-dom";
 
 function Root() {
