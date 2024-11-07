@@ -29,6 +29,7 @@ function ChannelsPage() {
       <SideMenu
         handleShowUsers={handleShowUsers}
         handleShowChatRooms={handleShowChatRooms}
+        showUsers={showUsers}
       />
       {!showUsers ? <ChannelsSection /> : <UsersList />}
     </section>
