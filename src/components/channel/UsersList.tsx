@@ -38,8 +38,8 @@ function UsersList() {
 
   return (
     <div className="channels-section">
-      <div className="wrapper">
-        <h1 className="channels__title">Users</h1>
+      <div className="users-header__wrapper">
+        <h2 className="title">Users</h2>
         <div className="input-icon-wrapper">
           <i className="search-icon">
             <svg

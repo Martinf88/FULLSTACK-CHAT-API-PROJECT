@@ -68,18 +68,8 @@
   width: var(--size-3xl);
 }
 .large-icon {
-  color: var(--clr-lightgrey);
-  width: var(--size-4xl);
-}
-.large-icon-selected {
   color: var(--clr-gold);
   width: var(--size-4xl);
-}
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .input {
@@ -108,8 +98,7 @@
   .container {
     max-width: 475px;
   }
-  .large-icon,
-  .large-icon-selected {
+  .large-icon {
     width: var(--size-5xl);
   }
 }

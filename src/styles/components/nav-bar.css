@@ -1,83 +1,75 @@
 .nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.2rem;
-	border-bottom: 2px solid var(--clr-lightgrey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid var(--clr-lightgrey);
 }
 
 .nav-text__wrapper {
-	display: flex;
-	gap: 0.5rem;
-	align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  align-items: end;
 }
 
 .nav__title {
-	font-size: var(--size-xl);
+  font-size: var(--size-xl);
 }
 
 .nav__subtitle {
-	font-size: var(--size-base);
+  font-size: var(--size-base);
 }
 
 .nav__subtitle-guest {
-	color: var(--clr-rose);
+  color: var(--clr-rose);
 }
 
 .nav__subtitle-user {
-	color: var(--clr-green);
+  color: var(--clr-green);
 }
 
- /* xs */
- @media (min-width: 475px) {
-	.nav__title {
-		font-size: var(--size-2xl);
-	}
-	
-	.nav__subtitle {
-		font-size: var(--size-lg);
-	}
-
-	.nav .small-icon {
-		width: var(--size-3xl);
-	}
+/* xs */
+@media (min-width: 475px) {
+  .nav__title {
+    font-size: var(--size-3xl);
   }
-  
-  /* sm */
-  @media (min-width: 640px) {
-	.nav__title {
-		font-size: var(--size-3xl);
-	}
-	
-	.nav__subtitle {
-		font-size: var(--size-xl);
-	}
 
-	.nav .small-icon {
-		width: var(--size-4xl);
-	}
+  .nav__subtitle {
+    font-size: var(--size-xl);
   }
-  
-  /* md */
-  /* @media (min-width: 768px) {} */
-  
-  /* lg */
-  @media (min-width: 1024px) {
-	.nav__title {
-		font-size: var(--size-4xl);
-	}
-	
-	.nav__subtitle {
-		font-size: var(--size-2xl);
-	}
 
-	.nav .small-icon {
-		width: var(--size-5xl);
-	}
+  .nav .small-icon {
+    width: var(--size-3xl);
   }
-  
-  /* xL */
-  /* @media (min-width: 1280px) {} */
-  
-  /* 2xL */
-  /* @media (min-width: 1536px) {} */
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .nav__title {
+    font-size: var(--size-4xl);
+  }
+
+  .nav__subtitle {
+    font-size: var(--size-2xl);
+  }
+
+  .nav .small-icon {
+    width: var(--size-4xl);
+  }
+}
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+@media (min-width: 1024px) {
+  .nav .small-icon {
+    width: var(--size-5xl);
+  }
+}
+
+/* xL */
+/* @media (min-width: 1280px) {} */
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */

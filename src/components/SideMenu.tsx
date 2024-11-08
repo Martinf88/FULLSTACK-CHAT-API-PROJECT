@@ -18,7 +18,7 @@ function SideMenu({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={showUsers ? "large-icon-selected" : "large-icon"}
+          className={showUsers ? "side-menu-icon-selected" : "side-menu-icon"}
         >
           <path
             strokeLinecap="round"
@@ -34,7 +34,7 @@ function SideMenu({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={!showUsers ? "large-icon-selected" : "large-icon"}
+          className={!showUsers ? "side-menu-icon-selected" : "side-menu-icon"}
         >
           <path
             strokeLinecap="round"

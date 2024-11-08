@@ -1,3 +1,11 @@
+.users-header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--clr-gold);
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
 .input-icon-wrapper {
   position: relative;
   display: inline-block;
@@ -13,5 +21,6 @@
 }
 
 .input-icon-wrapper input {
-  padding-left: 30px;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: 1px solid var(--clr-gold);
 }
